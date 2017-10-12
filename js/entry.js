@@ -7,7 +7,7 @@ import $ from "jquery";
 // 		async:false,
 // 		url : "https://api.douban.com/v2/movie/in_theaters", //跨域请求的URL
 // 		dataType: "jsonp",
-// 		success : function(json){ 
+// 		success : function(json){
 // 			console.log(json);
 // 		}
 // 	});
@@ -22,6 +22,6 @@ import xfooter from "../components/museUI/Bottom Navigation.vue"
 new Vue({
 	template:`<div>
 				<xfooter></xfooter>
-			</div>`, 
+			</div>`,
 	components:{xfooter}
-}).$mount('#box')
+}).$mount('#box') 
