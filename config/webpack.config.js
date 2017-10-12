@@ -30,7 +30,7 @@ module.exports = {
             vue: 'vue/dist/vue.js'
         }
     },
-    watch: true,
+    // watch: true,
     devServer: {
         contentBase: "./js",
         compress: true,
