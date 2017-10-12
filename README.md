@@ -1,3 +1,5 @@
+预览demo：onesevenzerofour.github.io/DouBanMovie/
+
 1. vue
 2. vue-router
 3. vuex
