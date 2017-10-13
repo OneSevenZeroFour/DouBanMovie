@@ -1,4 +1,4 @@
-<template>
+<template> 
 <mu-paper>
   <mu-bottom-nav :value="bottomNav" @change="handleChange">
     <mu-bottom-nav-item value="hotMovie" title="热映" icon="event_seat" iconClass="lighterColor" />

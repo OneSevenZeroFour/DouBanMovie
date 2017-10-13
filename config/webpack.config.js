@@ -32,7 +32,7 @@ module.exports = {
     },
     watch: true,
     devServer: {
-        contentBase: ["../","../js"],
+        contentBase: "../dist",
         compress: true,
         port: 8888
     },
