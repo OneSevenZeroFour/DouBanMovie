@@ -22,7 +22,6 @@ export default {
         }
     },
     mounted(){
-      console.log(this.$route.matched);
       var willingReg=/^\/hot\/willing(?:\/(?=$))?$/i;
       this.$route.matched.forEach(e=>{
         if(willingReg.test(e.path)){this.activeTab='tab2'}

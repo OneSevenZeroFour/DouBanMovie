@@ -54,12 +54,11 @@ export default {
 
     },
     mounted() {
-        jsonp('https://api.douban.com/v2/movie/in_theaters?city=广州', null, (err, data) => {
+        jsonp('https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=20', null, (err, data) => {
             if (err) {
                 console.error(err.message);
             } else {
                 this.subjects = data.subjects;
-                console.log(this.subjects);
             }
         });
     }
