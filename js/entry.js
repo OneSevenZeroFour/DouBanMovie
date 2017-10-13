@@ -1,27 +1,48 @@
 import Vue from "vue";
 
-import $ from "jquery";
-
-// $.ajax({
-// 		type : "get", //jquey是不支持post方式跨域的
-// 		async:false,
-// 		url : "https://api.douban.com/v2/movie/in_theaters", //跨域请求的URL
-// 		dataType: "jsonp",
-// 		success : function(json){
-// 			console.log(json);
-// 		}
-// 	});
-
-// museui:
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 Vue.use(MuseUI)
 
+import axios from "axios";
+import VueRouter from 'vue-router'
+import Vuex from 'vuex'
+import jsonp from 'jsonp'
+window.jsonp = jsonp
+
+Vue.use(VueRouter)
+Vue.use(Vuex)
+
 import xfooter from "../components/museUI/Bottom Navigation.vue"
+import hotTabs from "../components/museUI/hotTab.vue"
+import hotting from "../components/hotting.vue"
+import willing from "../components/willing.vue"
+
+var router = new VueRouter({
+    routes: [{
+        path: '/',
+        redirect: '/hot'
+    }, {
+        path: '/hot',
+        component: hotTabs,
+        children: [{
+            path: '/',
+            redirect: 'hotting'
+        }, {
+            path: 'hotting',
+            component: hotting
+        },{
+        	path: 'willing',
+            component: willing
+        }]
+    }]
+})
 
 new Vue({
-	template:`<div>
+    template: `<div>
+				<router-view></router-view>
 				<xfooter></xfooter>
-			</div>`,
-	components:{xfooter}
-}).$mount('#box') 
+			  </div>`,
+    components: { xfooter },
+    router,
+}).$mount('#box')

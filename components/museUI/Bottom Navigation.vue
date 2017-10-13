@@ -1,8 +1,8 @@
 <template> 
 <mu-paper>
   <mu-bottom-nav :value="bottomNav" @change="handleChange">
-    <mu-bottom-nav-item value="hotMovie" title="热映" icon="event_seat" iconClass="lighterColor" />
-    <mu-bottom-nav-item value="findMovie" title="找片" icon="remove_red_eye" iconClass="lighterColor" />
+    <mu-bottom-nav-item value="hotMovie" title="热映" icon="event_seat" iconClass="lighterColor" href="#/hot"/>
+    <mu-bottom-nav-item value="findMovie" title="找片" icon="remove_red_eye" iconClass="lighterColor" href="#/dd"/>
     <mu-bottom-nav-item value="myAccount" title="我的" icon="person_outline" iconClass="lighterColor" />
   </mu-bottom-nav>
 </mu-paper>
@@ -37,6 +37,7 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    border-top:1px solid #bbb;
+    border-top:1px solid #eee;
+    height: 50px;
   }
 </style>
