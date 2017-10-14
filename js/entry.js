@@ -1,8 +1,11 @@
-import Vue from "vue";
+import Vue from "vue"; 
 
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 Vue.use(MuseUI)
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
 
 import axios from "axios";
 import VueRouter from 'vue-router'
@@ -24,7 +27,9 @@ var router = new VueRouter({
         redirect: '/hot'
     }, {
         path: '/hot',
-        component: hotTabs,
+        component: 
+            hotTabs
+        ,
         children: [{
             path: '/',
             redirect: 'hotting'
@@ -43,6 +48,6 @@ new Vue({
 				<router-view></router-view>
 				<xfooter></xfooter>
 			  </div>`,
-    components: { xfooter },
+    components: { xfooter},
     router,
 }).$mount('#box')
