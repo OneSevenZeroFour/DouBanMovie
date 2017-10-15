@@ -1,5 +1,5 @@
 <template>
-            <swiper :options="swiperOption" ref="mySwiper" style="min-width: 320px;">
+            <swiper :options="swiperOption" ref="mySwiper" style="min-width: 320px;overflow:hidden">
                 <!-- slides -->
                 <div class="swiper-slide"  v-for="i in img"><img :src="i.url" alt="#"></div>
                 <!-- Optional controls -->
