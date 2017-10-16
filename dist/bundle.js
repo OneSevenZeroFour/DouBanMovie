@@ -34078,14 +34078,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         position: 'fixed',
                         top: '60px'
                     });
-                    el.nextSibling.nextSibling.style.margin = "70px 0 0";
+                    el.nextSibling.nextSibling.style.marginTop = "70px";
                 } else {
-                    el.nextSibling.nextSibling.style.margin = "30px 0 0";
+                    el.nextSibling.nextSibling.style.marginTop = "30px";
                 }
             } else {
                 el.style.position = "";
                 el.style.top = "";
-                el.nextSibling.nextSibling.style.margin = "";
+                el.nextSibling.nextSibling.style.marginTop = "";
                 $willingFilter.css({
                     position: '',
                     top: ''
