@@ -17,11 +17,13 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 
 import xfooter from "../components/museUI/Bottom Navigation.vue"
+
 import hotTabs from "../components/museUI/hotTab.vue"
 import hotting from "../components/hotting.vue"
 import willing from "../components/willing.vue"
 import person from "../components/person.vue"
-import find from "../components/find.vue"
+import xfindMoives from "../components/museUI/xfindMoives.vue"
+import xfMdetailMove from "../components/museUI/xfMdetailMove.vue"
 
 var router = new VueRouter({
     routes: [{
@@ -39,23 +41,26 @@ var router = new VueRouter({
             path: 'hotting',
             component: hotting
         },{
-        	path: 'willing',
+            path: 'willing',
             component: willing
         }]
     },{
         path:"/person",
         component:person
     },{
-        path:"/dd",
-        component:find
-    }]
+            path: '/findMoives',
+            component: xfindMoives
+        },{
+            path: '/fMdetailMove',
+            component: xfMdetailMove
+        }]
 })
 
 new Vue({
     template: `<div>
-				<router-view></router-view>
-				<xfooter></xfooter>
-			  </div>`,
+                <router-view></router-view>
+                <xfooter></xfooter>
+              </div>`,
     components: { xfooter},
     router,
 }).$mount('#box')
