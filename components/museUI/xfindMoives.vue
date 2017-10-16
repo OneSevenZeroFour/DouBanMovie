@@ -1,6 +1,8 @@
 <template>
 <div>
-  <mu-tabs :value="activeTab" @change="handleTabChange">
+	<searchbox></searchbox>
+	<div class='ert'>
+		<mu-tabs :value="activeTab" @change="handleTabChange" v-scroll="fixedTab">
     <mu-tab value="tab1" title="电影"/>
     <mu-tab value="tab2" title="电视剧"/>
   </mu-tabs>
@@ -78,6 +80,8 @@
 	<h4 style="margin-left:10px;margin-top:50px;">你可能感兴趣</h4>
 	<doubaninterst></doubaninterst>
   </div>
+	</div>		
+  
   
 </div>
 </template>
@@ -88,6 +92,7 @@
 	import doubantop from "./diubantop.vue";
 	import doubaninterst from "./doubaninterst.vue";
 	import todayTV from "./todayTV.vue";
+	import searchbox from "./searchboutton.vue";
 	//require("./css/index.css")
 
 	export default {
@@ -102,14 +107,59 @@
 	    },
 	    handleActive () {
 	      window.alert('tab active')
-	    }
+	    },
+	    fixedTab(bool,el){
+            let $willingFilter =  $(el.nextSibling.nextSibling).children('.hotBackground');
+            if(bool){
+                el.style.position="fixed";
+                el.style.top="30px";
+                if ($willingFilter.length>0) {
+                    $willingFilter.css({
+                        position: 'fixed',
+                        top: '60px'
+                    });
+                        el.nextSibling.nextSibling.style.marginTop="70px";
+                }else{el.nextSibling.nextSibling.style.marginTop="30px";}
+            }else{
+                el.style.position="";
+                el.style.top="";
+                el.nextSibling.nextSibling.style.marginTop="";
+                $willingFilter.css({
+                    position: '',
+                    top: ''
+                });
+            }
+            // console.log(ox);
+        }
 	  },
 	  components:{
 	  	todaymovies,
 	  	doubantop,
 	  	doubaninterst,
-	  	todayTV
-	  }
+	  	todayTV,
+	  	searchbox
+	  },
+	  mounted(){
+	  	var willingReg=/^\/hot\/willing(?:\/(?=$))?$/i;
+	      this.$route.matched.forEach(e=>{
+	        if(willingReg.test(e.path)){this.activeTab='tab2'}
+	      })
+	  },
+	  directives:{
+        scroll:{
+            bind(el,binding){
+                let ox=0;
+                let i=0;
+                window.onscroll=()=>{
+                    if(i===0){
+                        ox = el.offsetTop;
+                        ++i;
+                    }
+                    binding.value(window.scrollY+30>=ox,el);
+                }
+            }
+        }
+    }
 
 	}
 </script>
@@ -124,6 +174,9 @@
 		/*margin-left: 5px;*/
 		width:80px;
 	}
+	/*span .mu-tab-link-highlight {
+	    background-color: #333 !important;
+	}*/
 	.clear{display: block;width:100%;height:34px;}
 	.bread{
 		border-top:1px solid #ddd;
@@ -138,4 +191,18 @@
 	.bread .light{color:#ddd;font-size:12px;}
 	.left{float:left;}
 	.right{float:right;}
+	.ert{margin-top:30px;}
+	.mu-tabs{
+		background-color: #fff;
+	    height: 30px;
+	    border-bottom: 1px solid #eee;
+	 
+	}
+	.mu-tab-active {
+    color: #333 !important;
+	}
+	.mu-tab-link {
+    color: #ccc;
+}
+	
 </style>
