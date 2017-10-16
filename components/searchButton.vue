@@ -1,21 +1,31 @@
 <template>
-<div class="topBar">
-  <div class="location"><span>广州</span>
-    <div class="icon-contaner">
-      <mu-icon value="expand_more" color="#aaa" />
-    </div>
-  </div>
-  <div class="search">
-		<div class="button">
-			<div class="icon-contaner">
-	      <mu-icon value="search" color="#aaa" :size="20"/>
-	    </div>电影 / 电视剧 / 影人
+	<div class="hotBackground">
+		<div class="topBar">
+		  <div class="location"><span>广州</span>
+		    <div class="icon-contaner">
+		      <mu-icon value="expand_more" color="#aaa" />
+		    </div>
+		  </div>
+		  <div class="search">
+				<div class="button">
+					<div class="icon-contaner">
+			      <mu-icon value="search" color="#aaa" :size="20"/>
+			    </div>电影 / 电视剧 / 影人
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 </template>
 
 <style scoped lang="sass">
+.hotBackground{
+	position: fixed;
+	top:0;
+	left: 0;
+	right: 0;
+	background-color: #fff;
+	z-index: 9;
+}
 .topBar{
 	width: 95%;
 	min-width: 270px;

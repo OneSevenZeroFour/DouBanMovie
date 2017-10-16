@@ -20,6 +20,8 @@ import xfooter from "../components/museUI/Bottom Navigation.vue"
 import hotTabs from "../components/museUI/hotTab.vue"
 import hotting from "../components/hotting.vue"
 import willing from "../components/willing.vue"
+import person from "../components/person.vue"
+import find from "../components/find.vue"
 
 var router = new VueRouter({
     routes: [{
@@ -40,6 +42,12 @@ var router = new VueRouter({
         	path: 'willing',
             component: willing
         }]
+    },{
+        path:"/person",
+        component:person
+    },{
+        path:"/dd",
+        component:find
     }]
 })
 

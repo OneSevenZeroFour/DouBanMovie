@@ -1,18 +1,20 @@
 <template>
     <div>
-    	<div class="filter">
-    		<div class="leftFilter">
-	    		<span class="highlight-text">全部</span>
-	    		<span>10月</span>
-	    		<span>11月</span>
-	    		<span>12月</span>
-    		</div>
-    		<div class="rightFilter">
-    			<span>|</span>
-    			<span class="highlight-text">时间</span>
-    			<span>热度</span>
-    		</div>
-    	</div>
+        <div class="hotBackground">
+            <div class="filter">
+                <div class="leftFilter">
+                    <span class="highlight-text">全部</span>
+                    <span>10月</span>
+                    <span>11月</span>
+                    <span>12月</span>
+                </div>
+                <div class="rightFilter">
+                    <span>|</span>
+                    <span class="highlight-text">时间</span>
+                    <span>热度</span>
+                </div>
+            </div>
+        </div>
         <div v-for="(val,key) in movieObjs">
             <div class="classTitle">{{key}}</div>
             <div v-for="value in val" class="hotMovie">
@@ -71,10 +73,8 @@ export default {
                     }
                     dateSet.add([resetTime(timeStr), movieArr])
                 })
-                	console.log(dateSet);
                 const movieMap = new Map(dateSet);
                 this.movieObj = strMapToObj(movieMap)
-                console.log("Map对象：", this.movieObj);
 
                 function strMapToObj(strMap) {
                     let obj = Object.create(null);
@@ -124,6 +124,14 @@ export default {
 <style scoped lang="sass">
 $buttonColor:#ffb300;
 
+.hotBackground{
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 9;
+    height: 40px;
+    line-height: 40px;
+}
 .hotDetail {
     float: left;
     list-style: none;
@@ -170,23 +178,24 @@ $buttonColor:#ffb300;
     padding: 5px 10px;
     font-size: 0.7rem
 }
-.filter{
-	overflow: hidden;
-	width: 95%;
-	margin: 0 auto;
-	color:#ddd;
-	.leftFilter{
-		float: left;
-	}
-	.rightFilter{
-		float:right;
-	}
-	span{
-		padding: 2px 3px;
-		font-size: 0.9rem
-	}
-	.highlight-text{
-		color:#333;
-	}
+
+.filter {
+    overflow: hidden;
+    width: 95%;
+    margin: 0 auto;
+    color: #ddd;
+    .leftFilter {
+        float: left;
+    }
+    .rightFilter {
+        float: right;
+    }
+    span {
+        padding: 2px 3px;
+        font-size: 0.9rem
+    }
+    .highlight-text {
+        color: #333;
+    }
 }
 </style>
