@@ -2,7 +2,7 @@
 <mu-paper>
   <mu-bottom-nav :value="bottomNav" @change="handleChange">
     <mu-bottom-nav-item value="hotMovie" title="热映" icon="event_seat" iconClass="lighterColor" />
-    <mu-bottom-nav-item value="findMovie" title="找片" icon="remove_red_eye" iconClass="lighterColor" />
+    <mu-bottom-nav-item value="findMovie" href="#/findMoives" title="找片" icon="remove_red_eye" iconClass="lighterColor" />
     <mu-bottom-nav-item value="myAccount" title="我的" icon="person_outline" iconClass="lighterColor" />
   </mu-bottom-nav>
 </mu-paper>
@@ -19,7 +19,8 @@ export default {
     handleChange(val) {
       this.bottomNav = val
     }
-  }
+  },
+
 }
 </script>
 

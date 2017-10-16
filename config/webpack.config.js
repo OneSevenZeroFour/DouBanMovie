@@ -10,6 +10,9 @@ module.exports = {
         loaders: [{
             test: /\.css$/,
             loader: 'style-loader!css-loader'
+        },{
+            test: /\.(ttf|woff|eot|svg)$/,
+            loader: 'file-loader'
         }, {
             test: /\.html$/,
             loader: 'html-loader'
