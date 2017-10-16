@@ -35458,7 +35458,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -35483,16 +35482,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 								},
 								fixedTab(bool, el) {
 												let $willingFilter = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el.nextSibling.nextSibling).children('.hotBackground');
+
 												if (bool) {
 																el.style.position = "fixed";
 																el.style.top = "30px";
-
 																if ($willingFilter.length > 0) {
 																				$willingFilter.css({
 																								position: 'fixed',
 																								top: '60px'
 																				});
-																				console.log(el.nextSibling.nextSibling);
 																				el.nextSibling.nextSibling.style.marginTop = "70px";
 																} else {
 																				try {
@@ -36418,11 +36416,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": "tab2",
       "title": "电视剧"
     }
-  })], 1), _vm._v(" "), _c('router-view', {
-    staticStyle: {
-      "margin-bottom": "50px"
-    }
-  }), _vm._v(" "), (_vm.activeTab === 'tab1') ? _c('div', [_c('div', {
+  })], 1), _vm._v(" "), (_vm.activeTab === 'tab1') ? _c('div', [_c('div', {
     staticClass: "top"
   }, [_vm._m(0), _vm._v(" "), _c('todaymovies')], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "top"

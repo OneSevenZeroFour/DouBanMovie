@@ -6,8 +6,7 @@
 	    <mu-tab value="tab1" title="电影" />
 	    <mu-tab value="tab2" title="电视剧" />
 	  	</mu-tabs>
-		<router-view style="margin-bottom: 50px">
-         </router-view>
+		
   <div v-if="activeTab === 'tab1'">
 	 	<div class='top'>
 	 		<h4 class='tops'>今日推荐<span> <a href="#/fMdetailMove">全部20  ></a></span></h4>
@@ -111,22 +110,18 @@
 	    },
 	    fixedTab(bool,el){
             let $willingFilter =  $(el.nextSibling.nextSibling).children('.hotBackground');
+            
             if(bool){
                 el.style.position="fixed";
                 el.style.top="30px";
-
                 if ($willingFilter.length>0) {
                     $willingFilter.css({
                         position: 'fixed',
                         top: '60px'
                     });
-                    console.log(el.nextSibling.nextSibling);
                         el.nextSibling.nextSibling.style.marginTop="70px";
-                }else{
-                	try{el.nextSibling.nextSibling.style.marginTop="70px"}catch(e){
+                }else{try{el.nextSibling.nextSibling.style.marginTop="70px"}catch(e){}}
 
-                	}
-                }
             }
         }
 	  },
