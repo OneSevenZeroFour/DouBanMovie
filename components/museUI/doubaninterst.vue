@@ -52,19 +52,21 @@ export default {
         if(self.start>=130){
           return
         }
-        $.ajax({
-          type:'GET',
-          //url:"https://api.douban.com//v2/movie/top250?start="+self.start+"&count=10",
-          url:"https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start="+self.start+"&count="+self.num+"&client=somemessage&udid=dddddddddddddddddddddd",
-          dataType:"jsonp",
-          success:function(data){
-            // console.log(data.subjects);
-            self.lists = data.subjects;
-             // self.lists = self.lists.concat(data.subjects);
-            self.start+=20;
-           
-          }
-        })
+        try{
+             $.ajax({
+            type:'GET',
+            //url:"https://api.douban.com//v2/movie/top250?start="+self.start+"&count=10",
+            url:"https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start="+self.start+"&count="+self.num+"&client=somemessage&udid=dddddddddddddddddddddd",
+            dataType:"jsonp",
+            success:function(data){
+              // console.log(data.subjects);
+              self.lists = data.subjects;
+               // self.lists = self.lists.concat(data.subjects);
+              self.start+=20;
+            }
+          })
+           }catch(e){}
+       
 
         this.num += 10
         this.loading = false

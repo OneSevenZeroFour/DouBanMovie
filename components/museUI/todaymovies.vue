@@ -18,7 +18,6 @@ export default {
     }
   },
   mounted(){
-    console.log(this);
     var self = this;
     $.ajax({
       type:'GET',
@@ -26,14 +25,14 @@ export default {
       
       dataType:"jsonp",
       success:function(data){
-     
+
         self.lists = data.subjects;
       }
     })
   },
   methods:{
     ok(){
-     
+
     }
   }
 }

@@ -3,10 +3,11 @@
 	<searchbox></searchbox>
 	<div class='ert'>
 		<mu-tabs :value="activeTab" @change="handleTabChange" v-scroll="fixedTab">
-    <mu-tab value="tab1" title="电影"/>
-    <mu-tab value="tab2" title="电视剧"/>
-  </mu-tabs>
-
+	    <mu-tab value="tab1" title="电影" />
+	    <mu-tab value="tab2" title="电视剧" />
+	  	</mu-tabs>
+		<router-view style="margin-bottom: 50px">
+         </router-view>
   <div v-if="activeTab === 'tab1'">
 	 	<div class='top'>
 	 		<h4 class='tops'>今日推荐<span> <a href="#/fMdetailMove">全部20  ></a></span></h4>
@@ -51,7 +52,7 @@
     <div class='top'>
 	 		<h4 class='tops'>近期热门电视剧<span> <a href="#/todayTVdetail">全部30  ></a></span></h4>
 			<todayTV></todayTV>
-	 </div>
+	</div>
 	 <div class='bread'>
 	    	<div class='left'>
 		    	<div class='left'>
@@ -113,23 +114,20 @@
             if(bool){
                 el.style.position="fixed";
                 el.style.top="30px";
+
                 if ($willingFilter.length>0) {
                     $willingFilter.css({
                         position: 'fixed',
                         top: '60px'
                     });
+                    console.log(el.nextSibling.nextSibling);
                         el.nextSibling.nextSibling.style.marginTop="70px";
-                }else{el.nextSibling.nextSibling.style.marginTop="30px";}
-            }else{
-                el.style.position="";
-                el.style.top="";
-                el.nextSibling.nextSibling.style.marginTop="";
-                $willingFilter.css({
-                    position: '',
-                    top: ''
-                });
+                }else{
+                	try{el.nextSibling.nextSibling.style.marginTop="70px"}catch(e){
+
+                	}
+                }
             }
-            // console.log(ox);
         }
 	  },
 	  components:{
@@ -170,6 +168,7 @@
 	.top span{float:right;display:block;color:#ddd;}
 	.top span a{color:#ddd;}
 	.tops{margin:10px 0;}
+
 	h3{
 		/*margin-left: 5px;*/
 		width:80px;

@@ -55,7 +55,6 @@ export default {
           url:"https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=10&client=somemessage&udid=dddddddddddddddddddddd",
           dataType:"jsonp",
           success:function(data){
-            console.log(data.subjects);
             self.lists = data.subjects;
              //self.lists = self.lists.concat(data.subjects);
             self.start+=1;
