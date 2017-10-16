@@ -1,7 +1,7 @@
 <template>
 <div class="gridlist-demo-container">
 
-  <h3> <span @click="$router.go(-1)">&lt;</span>今日推荐</h3>
+  <h3> <span @click="$router.go(-1)">&lt;</span>近期热门电视剧</h3>
   <mu-grid-list class="gridlist-demo">
     <mu-grid-tile   v-for="tile ,index in lists"  :key="index" class='todays' >
       <img  :src="tile.images.large"/>
@@ -25,7 +25,7 @@ export default {
     var self = this;
     $.ajax({
       type:'GET',
-      url:"https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=20&client=somemessage&udid=dddddddddddddddddddddd",
+      url:"https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=10&count=30&client=somemessage&udid=dddddddddddddddddddddd",
       
       dataType:"jsonp",
       success:function(data){

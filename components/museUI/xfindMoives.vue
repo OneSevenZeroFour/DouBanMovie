@@ -7,9 +7,9 @@
 
   <div v-if="activeTab === 'tab1'">
 	 	<div class='top'>
-	 		<h4 class='tops'>今日推荐</h4>
-    		<span> <a href="#/fMdetailMove">全部20  ></a></span>
-    		<div class='clear'></div>
+	 		<h4 class='tops'>今日推荐<span> <a href="#/fMdetailMove">全部20  ></a></span></h4>
+    		
+    	<!-- 	<div class='clear'></div> -->
 			<todaymovies></todaymovies>
 	 	</div>
 	    <div class='bread'>
@@ -46,11 +46,39 @@
 		<doubaninterst></doubaninterst>
   </div>
   <div v-if="activeTab === 'tab2'">
-    <h2>电视</h2>
-    <p>
-      这是第二个 tab
-    </p>
+    <div class='top'>
+	 		<h4 class='tops'>近期热门电视剧<span> <a href="#/todayTVdetail">全部30  ></a></span></h4>
+			<todayTV></todayTV>
+	 </div>
+	 <div class='bread'>
+	    	<div class='left'>
+		    	<div class='left'>
+		    		<span class='more'><img src="http://pic5.qiyipic.com/common/lego/20151217/dcb0aaf460974b96a65ac7f66e71a189.png" alt="" style="width:30px;"></span>
+		    	</div>
+		    	
+	    		<div class='right'>
+	    			<div><b>找电视</b></div>
+	    			<div><span class='light'>国产剧/动画/悬疑</span></div>
+	    		</div>
+	    		
+	    	</div>
+	    	<div class='left jiange'>
+		    		|
+		    	</div>
+	    	<div class='right'>
+	    		<div class='left'>
+	    			<span class='more'><img src="http://pic7.qiyipic.com/common/lego/20151201/88a672e670624791966f65d0520c8cd8.png" alt="" style="width:30px;"></span>
+	    		</div>
+	    		<div class='right'>
+	    			<div><b>我的电视剧</b></div>
+	    		<div><span class='light'>未登录</span></div>
+	    		</div>	
+	    	</div>
+	</div>
+	<h4 style="margin-left:10px;margin-top:50px;">你可能感兴趣</h4>
+	<doubaninterst></doubaninterst>
   </div>
+  
 </div>
 </template>
 
@@ -59,6 +87,7 @@
 	import todaymovies from "./todaymovies.vue";
 	import doubantop from "./diubantop.vue";
 	import doubaninterst from "./doubaninterst.vue";
+	import todayTV from "./todayTV.vue";
 	//require("./css/index.css")
 
 	export default {
@@ -78,7 +107,8 @@
 	  components:{
 	  	todaymovies,
 	  	doubantop,
-	  	doubaninterst
+	  	doubaninterst,
+	  	todayTV
 	  }
 
 	}
@@ -89,7 +119,7 @@
 	/*.top h4{float:left;}*/
 	.top span{float:right;display:block;color:#ddd;}
 	.top span a{color:#ddd;}
-	.tops{margin:10px 0;padding-top:30px;}
+	.tops{margin:10px 0;}
 	h3{
 		/*margin-left: 5px;*/
 		width:80px;

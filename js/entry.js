@@ -20,6 +20,7 @@ Vue.use(MuseUI)
 import xfooter from "../components/museUI/Bottom Navigation.vue"
 import xfindMoives from "../components/museUI/xfindMoives.vue"
 import xfMdetailMove from "../components/museUI/xfMdetailMove.vue"
+import xtodayTVdetail from "../components/museUI/todayTVdetail.vue"
 import VueRouter from 'vue-router'
 // require('../css/font-awesome.min.css')
 // require('../css/style.css')
@@ -36,6 +37,9 @@ var router = new VueRouter({
 		},{
 			path: '/fMdetailMove',
 			component: xfMdetailMove
+		},{
+			path: '/todayTVdetail',
+			component: xtodayTVdetail
 		}
 	]
 })

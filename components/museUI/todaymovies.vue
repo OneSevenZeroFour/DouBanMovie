@@ -26,14 +26,14 @@ export default {
       
       dataType:"jsonp",
       success:function(data){
-        console.log(data.subjects);
+     
         self.lists = data.subjects;
       }
     })
   },
   methods:{
     ok(){
-      console.log(1231)
+     
     }
   }
 }
