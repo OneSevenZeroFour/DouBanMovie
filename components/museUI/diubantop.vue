@@ -1,20 +1,23 @@
 <template>
 <div class="demo-infinite-container">
   <mu-list>
-    <template v-for="(item,index) in lists">
+    <template v-for="(item,index) in lists" >
      <!--  <mu-list-item/> -->
         <!-- <div>{{i}}</div> -->
-        <div class='tenter'>
+        <a :href="'#/detail/'+item.id">
+          <div class='tenter' >
           <div class='NO left' ><b><i>{{index+1}}</i></b></div>
-        <img :src="item.images.small" alt="" class='IMG left'>
-        <div class='left details'>
-          <div class='name'>{{item.title}}</div>
-          <div class='stars left'></div>
-          <div class='pingfeng left'>{{item.rating.average}}</div>
-          <div class='count left'>{{item.collect_count}}人评价</div>
+          <img :src="item.images.small" alt="" class='IMG left'>
+         
+          <div class='left details'>
+            <div class='name'>{{item.title}}</div>
+            <div class='stars left'></div>
+            <div class='pingfeng left'>{{item.rating.average}}</div>
+            <div class='count left'>{{item.collect_count}}人评价</div>
+          </div>
         </div>
+        </a>
         
-        </div>
         
       <mu-divider/>
     </template>
@@ -75,6 +78,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+a{color:#000;}
 .tenter{padding:5px;}
 .stars{background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;height:8px;width:47px;margin-top:4px;}
 .NO{margin:5px 10px 0 5px;}

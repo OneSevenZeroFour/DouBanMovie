@@ -1,4 +1,5 @@
-<template> 
+<template>
+<div>
 <mu-paper>
   <mu-bottom-nav :value="bottomNav" @change="handleChange">
     <mu-bottom-nav-item value="hotMovie" title="热映" icon="event_seat" iconClass="lighterColor" href="#/hot"/>
@@ -6,6 +7,7 @@
     <mu-bottom-nav-item value="myAccount" title="我的" icon="person_outline" iconClass="lighterColor" href="#/person" />
   </mu-bottom-nav>
 </mu-paper>
+  </div>
 </template>
 
 <script>

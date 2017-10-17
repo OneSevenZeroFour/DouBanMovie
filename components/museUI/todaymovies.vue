@@ -1,9 +1,11 @@
 <template>
 <div class="gridlist-demo-container">
-  <mu-grid-list class="gridlist-demo">
-    <mu-grid-tile   v-for="tile ,index in lists"  :key="index" class='todays' >
-      <img @touchmove="ok" :src="tile.images.large"/>
+  <mu-grid-list class="gridlist-demo" >
+    <mu-grid-tile   v-for="tile ,index in lists"  :key="index" class='todays' :href="'#/detail/'+tile.id">
+    
+      <a :href="'#/detail/'+tile.id"><img @touchmove="ok" :src="tile.images.large"/></a>
       <span slot="title">{{tile.title}}</span>
+   
     </mu-grid-tile>
   </mu-grid-list>
 </div>
@@ -25,7 +27,7 @@ export default {
       
       dataType:"jsonp",
       success:function(data){
-
+        console.log(data.subjects)
         self.lists = data.subjects;
       }
     })
