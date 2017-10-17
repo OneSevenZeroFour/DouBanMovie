@@ -8,9 +8,10 @@
          <!--  <div class='NO left' ><b><i>{{index+1}}</i></b></div> -->
         <img :src="item.images.small" alt="" class='IMG left'>
         <div class='left details'>
-          <div class='name'>{{item.title?item.title:"123"}}</div>
-          <div class='year'>{{item.year}}/{{item.casts[0]?item.casts[0].name_en:"未知"}}/{{item.genres[0]}}/{{item.genres[1]}}</div>
-          <div class='time'>时长：{{item.durations[0]}}</div>
+          <div class='name'>{{item.title}}</div>
+          <div>主演：{{item.casts[0]?item.casts[0].name_en:"未知"}}</div>
+          <div class='year'>类型：{{item.genres[0]}}/{{item.genres[1]}}</div>
+         <!--  <div class='time'>时长：{{item.durations[0]}}</div> -->
           <div class='stars left'></div>
           <div class='pingfeng left'>{{item.rating.average}}</div>
           <div class='count left'>{{item.collect_count}}人评价</div>
@@ -38,7 +39,7 @@ export default {
       //list,
       lists:[],
       num:20,
-      start:10,
+      start:20,
       loading: false,
       scroller: null
     }

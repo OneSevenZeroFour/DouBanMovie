@@ -11,7 +11,7 @@
 	 	<div class='top'>
 	 		<h4 class='tops'>今日推荐<span> <a href="#/fMdetailMove">全部20  ></a></span></h4>
     		
-    	<!-- 	<div class='clear'></div> -->
+    	
 			<todaymovies></todaymovies>
 	 	</div>
 	    <div class='bread'>
@@ -78,7 +78,7 @@
 	    	</div>
 	</div>
 	<h4 style="margin-left:10px;margin-top:50px;">你可能感兴趣</h4>
-	<doubaninterst></doubaninterst>
+	<doubanTVinterst></doubanTVinterst>
   </div>
 	</div>		
   
@@ -92,6 +92,7 @@
 	import doubantop from "./diubantop.vue";
 	import doubaninterst from "./doubaninterst.vue";
 	import todayTV from "./todayTV.vue";
+	import doubanTVinterst from "./doubanTVintrest.vue";
 	import searchbox from "./searchboutton.vue";
 	//require("./css/index.css")
 
@@ -130,7 +131,8 @@
 	  	doubantop,
 	  	doubaninterst,
 	  	todayTV,
-	  	searchbox
+	  	searchbox,
+	  	doubanTVinterst
 	  },
 	  mounted(){
 	  	var willingReg=/^\/hot\/willing(?:\/(?=$))?$/i;
