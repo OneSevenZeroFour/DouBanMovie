@@ -38215,8 +38215,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             url: "https://api.douban.com/v2/movie/subject/" + self.$route.params.id + "/photos?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&client=something&udid=dddddddddddddddddddddd",
             dataType: "jsonp",
             success: function (json) {
-                console.log(json);
-                self.arr = json.photos;
+                console.log("111", json);
+                self.arr = json.subject;
             }
         });
     }
@@ -38229,7 +38229,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('section', {
     staticClass: "subject-pics"
-  }, [_c('h2', [_vm._v("羞羞的铁拳的图片")]), _vm._v(" "), _c('div', {
+  }, [_c('h2', [_vm._v(_vm._s(_vm.arr.title) + "的图片")]), _vm._v(" "), _c('div', {
     staticClass: "bd photo-list"
   }, [_c('ul', {
     staticClass: "wx-preview"

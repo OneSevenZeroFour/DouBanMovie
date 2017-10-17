@@ -1,6 +1,6 @@
 <template>
     <section class="subject-pics">
-        <h2>羞羞的铁拳的图片</h2>
+        <h2>{{arr.title}}的图片</h2>
         <div class="bd photo-list">
             <ul class="wx-preview">
                 <li class="video" data-type="cover" style="background-image: url(&quot;https://img3.doubanio.com/img/trailer/medium/2499811714.jpg?&quot;);">
@@ -19,7 +19,7 @@
 export default{
     data(){
         return{
-            arr:[]
+            arr:[],
         }
     },
 	mounted(){
@@ -29,8 +29,8 @@ export default{
         url : "https://api.douban.com/v2/movie/subject/"+self.$route.params.id+"/photos?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&client=something&udid=dddddddddddddddddddddd", 
         dataType: "jsonp",
         success : function(json){
-            console.log(json);
-            self.arr=json.photos;
+            console.log("111",json);
+            self.arr=json.subject;
         }
     });
   }
