@@ -1,6 +1,6 @@
 import Vue from "vue";
 import $ from "jquery";
-Vue.prototype.$=$
+Vue.prototype.$=$;
 
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'

@@ -21879,7 +21879,7 @@ module.exports = swiper
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
+/* WEBPACK VAR INJECTION */(function(jQuery) {/**
  * Swiper 3.4.2
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * 
@@ -27234,6 +27234,7 @@ else if (typeof define === 'function' && define.amd) {
 
 //# sourceMappingURL=maps/swiper.js.map
 
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
 /* 11 */
@@ -34066,7 +34067,7 @@ exports.push([module.i, "\n.mu-tabs {\n  background-color: #fff;\n  height: 30px
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Carousel_vue__ = __webpack_require__(65);
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Carousel_vue__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Carousel_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Carousel_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__searchButton_vue__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__searchButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__searchButton_vue__);
@@ -34149,6 +34150,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     }
 });
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
 
 /***/ }),
 /* 65 */
