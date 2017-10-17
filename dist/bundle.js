@@ -34592,7 +34592,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\na[data-v-c39e161c] {\n  color: #333;\n}\n.hotDetail[data-v-c39e161c] {\n  float: left;\n  list-style: none;\n  margin: 0;\n  padding: 0 20px;\n  width: 54%;\n}\n.hotMovie[data-v-c39e161c] {\n  padding: 10px;\n  overflow: hidden;\n  border-bottom: 1px solid #eee;\n}\n.hotDetailButton[data-v-c39e161c] {\n  list-style: none;\n  float: right;\n  padding: 0;\n  width: 24%;\n  text-align: center;\n  vertical-align: middle;\n  margin: 25px 0 0;\n  color: #ff1744;\n}\n.text-style[data-v-c39e161c] {\n  font-size: 8px;\n  color: #888;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n}\n.button[data-v-c39e161c] {\n  width: 100%;\n  border: 1px solid #ff4081;\n  border-radius: 3px;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-c39e161c] {\n  color: #333;\n}\n.mu-circular-progress[data-v-c39e161c] {\n  margin: 30px auto;\n  display: block;\n}\n.hotDetail[data-v-c39e161c] {\n  float: left;\n  list-style: none;\n  margin: 0;\n  padding: 0 20px;\n  width: 54%;\n}\n.hotMovie[data-v-c39e161c] {\n  padding: 10px;\n  overflow: hidden;\n  border-bottom: 1px solid #eee;\n}\n.hotDetailButton[data-v-c39e161c] {\n  list-style: none;\n  float: right;\n  padding: 0;\n  width: 24%;\n  text-align: center;\n  vertical-align: middle;\n  margin: 25px 0 0;\n  color: #ff1744;\n}\n.text-style[data-v-c39e161c] {\n  font-size: 8px;\n  color: #888;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n}\n.button[data-v-c39e161c] {\n  width: 100%;\n  border: 1px solid #ff4081;\n  border-radius: 3px;\n}\n", ""]);
 
 // exports
 
@@ -34650,17 +34650,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data() {
         return {
-            subjects: []
+            subjects: [],
+            showFlag: true,
+            page: 1,
+            count: 20
         };
     },
-    computed: {},
+    methods: {
+        loadMore() {
+            jsonp(`https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start={(page-1)*count}&count=20`, null, (err, data) => {
+                if (err) {
+                    console.error(err.message);
+                } else {
+                    this.subjects.concat(data.subjects);
+                };
+            });
+        }
+    },
     mounted() {
         if (sessionStorage.getItem('hotting')) {
             this.subjects = JSON.parse(sessionStorage.getItem('hotting'));
+            this.showFlag = false;
         } else {
             jsonp('https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=20', null, (err, data) => {
                 if (err) {
@@ -34668,6 +34683,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else {
                     this.subjects = data.subjects;
                     sessionStorage.setItem('hotting', JSON.stringify(data.subjects));
+                    this.showFlag = false;
                 }
             });
         }
@@ -34686,8 +34702,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.subjects), function(m) {
-    return _c('a', {
+  return _c('div', [_vm._l((_vm.subjects), function(m) {
+    return (!_vm.showFlag) ? _c('a', {
       attrs: {
         "href": '#/detail/' + m.id
       }
@@ -34820,8 +34836,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticStyle: {
         "font-size": "9px"
       }
-    }, [_vm._v(_vm._s(_vm._f("number")(m.collect_count)) + "人看过")]), _vm._v(" "), _vm._m(0, true)])])])
-  }))
+    }, [_vm._v(_vm._s(_vm._f("number")(m.collect_count)) + "人看过")]), _vm._v(" "), _vm._m(0, true)])])]) : _vm._e()
+  }), _vm._v(" "), (_vm.showFlag) ? _c('mu-circular-progress', {
+    attrs: {
+      "size": 40,
+      "color": "green"
+    }
+  }) : _vm._e()], 2)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('div', {
     staticClass: "button"
@@ -34908,7 +34929,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\na[data-v-869c2ef2] {\n  color: #333;\n}\n.hotBackground[data-v-869c2ef2] {\n  left: 0;\n  right: 0;\n  background-color: #fff;\n  z-index: 9;\n  height: 40px;\n  line-height: 40px;\n}\n.hotDetail[data-v-869c2ef2] {\n  float: left;\n  list-style: none;\n  margin: 0;\n  padding: 0 20px;\n  width: 57%;\n}\n.hotMovie[data-v-869c2ef2] {\n  padding: 10px;\n  overflow: hidden;\n  border-bottom: 1px solid #eee;\n}\n.hotDetailButton[data-v-869c2ef2] {\n  list-style: none;\n  float: right;\n  padding: 0;\n  width: 21%;\n  text-align: center;\n  vertical-align: middle;\n  margin: 25px 0 0;\n  color: #ffb300;\n}\n.text-style[data-v-869c2ef2] {\n  font-size: 8px;\n  color: #888;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n}\n.button[data-v-869c2ef2] {\n  width: 100%;\n  border: 1px solid #ffb300;\n  border-radius: 3px;\n}\n.classTitle[data-v-869c2ef2] {\n  background-color: #eee;\n  color: #888;\n  padding: 5px 10px;\n  font-size: 0.7rem;\n}\n.filter[data-v-869c2ef2] {\n  overflow: hidden;\n  width: 95%;\n  margin: 0 auto;\n  color: #ddd;\n}\n.filter .leftFilter[data-v-869c2ef2] {\n    float: left;\n}\n.filter .rightFilter[data-v-869c2ef2] {\n    float: right;\n}\n.filter span[data-v-869c2ef2] {\n    padding: 2px 3px;\n    font-size: 0.9rem;\n}\n.filter .highlight-text[data-v-869c2ef2] {\n    color: #333;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-869c2ef2] {\n  color: #333;\n}\n.mu-circular-progress[data-v-869c2ef2] {\n  margin: 30px auto;\n  display: block;\n}\n.hotBackground[data-v-869c2ef2] {\n  left: 0;\n  right: 0;\n  background-color: #fff;\n  z-index: 9;\n  height: 40px;\n  line-height: 40px;\n}\n.hotDetail[data-v-869c2ef2] {\n  float: left;\n  list-style: none;\n  margin: 0;\n  padding: 0 20px;\n  width: 57%;\n}\n.hotMovie[data-v-869c2ef2] {\n  padding: 10px;\n  overflow: hidden;\n  border-bottom: 1px solid #eee;\n}\n.hotDetailButton[data-v-869c2ef2] {\n  list-style: none;\n  float: right;\n  padding: 0;\n  width: 21%;\n  text-align: center;\n  vertical-align: middle;\n  margin: 25px 0 0;\n  color: #ffb300;\n}\n.text-style[data-v-869c2ef2] {\n  font-size: 8px;\n  color: #888;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n}\n.button[data-v-869c2ef2] {\n  width: 100%;\n  border: 1px solid #ffb300;\n  border-radius: 3px;\n}\n.classTitle[data-v-869c2ef2] {\n  background-color: #eee;\n  color: #888;\n  padding: 5px 10px;\n  font-size: 0.7rem;\n}\n.filter[data-v-869c2ef2] {\n  overflow: hidden;\n  width: 95%;\n  margin: 0 auto;\n  color: #ddd;\n}\n.filter .leftFilter[data-v-869c2ef2] {\n    float: left;\n}\n.filter .rightFilter[data-v-869c2ef2] {\n    float: right;\n}\n.filter span[data-v-869c2ef2] {\n    padding: 2px 3px;\n    font-size: 0.9rem;\n}\n.filter .highlight-text[data-v-869c2ef2] {\n    color: #333;\n}\n", ""]);
 
 // exports
 
@@ -34961,11 +34982,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data() {
         return {
-            movieObj: {}
+            movieObj: {},
+            showFlag: true
         };
     },
     computed: {
@@ -34976,6 +34999,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted() {
         if (sessionStorage.getItem('willing')) {
             this.movieObj = JSON.parse(sessionStorage.getItem('willing'));
+            this.showFlag = false;
         } else {
             jsonp('https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=100', null, (err, data) => {
                 if (err) {
@@ -35003,6 +35027,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.movieObj = strMapToObj(movieMap);
 
                     sessionStorage.setItem('willing', JSON.stringify(this.movieObj));
+                    this.showFlag = false;
 
                     function strMapToObj(strMap) {
                         let obj = Object.create(null);
@@ -35063,7 +35088,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_vm._m(0), _vm._v(" "), _vm._l((_vm.movieObjs), function(val, key) {
-    return _c('div', [_c('div', {
+    return (!_vm.showFlag) ? _c('div', [_c('div', {
       staticClass: "classTitle"
     }, [_vm._v(_vm._s(key))]), _vm._v(" "), _vm._l((val), function(value) {
       return _c('a', {
@@ -35101,8 +35126,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           "font-size": "9px"
         }
       }, [_vm._v(_vm._s(_vm._f("number")(value.collect_count)) + "人想看")]), _vm._v(" "), _vm._m(1, true)])])])
-    })], 2)
-  })], 2)
+    })], 2) : _vm._e()
+  }), _vm._v(" "), (_vm.showFlag) ? _c('mu-circular-progress', {
+    attrs: {
+      "size": 40,
+      "color": "green"
+    }
+  }) : _vm._e()], 2)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "hotBackground"
@@ -35673,7 +35703,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\n.gridlist-demo-container[data-v-3a926fdc]{width:2000px;\n}\n.gridlist-demo .todays[data-v-3a926fdc]{\r\n  float:left;\r\n  width: 5% !important;\r\n  padding: 2px !important;\r\n  height: 180px !important;\n}\n.gridlist-demo .todays img[data-v-3a926fdc]{width:100%;\n}\n.mu-grid-tile-subtitle[data-v-3a926fdc], .mu-grid-tile-title[data-v-3a926fdc] {\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    word-wrap: break-word;\r\n    text-align: center !important;\n}\r\n\r\n/*.gridlist-demo-container{\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-around;\r\n}\r\n\r\n.gridlist-demo{\r\n  width: 500px;\r\n  height: 450px;\r\n  overflow-y: auto;\r\n}*/\r\n\r\n", ""]);
+exports.push([module.i, "\n.gridlist-demo-container[data-v-3a926fdc] {\r\n    width: 2000px;\n}\n.gridlist-demo .todays[data-v-3a926fdc] {\r\n    float: left;\r\n    width: 5% !important;\r\n    padding: 2px !important;\r\n    height: 180px !important;\n}\n.gridlist-demo .todays img[data-v-3a926fdc] {\r\n    width: 100%;\n}\n.mu-grid-tile-subtitle[data-v-3a926fdc],\r\n.mu-grid-tile-title[data-v-3a926fdc] {\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    word-wrap: break-word;\r\n    text-align: center !important;\n}\r\n", ""]);
 
 // exports
 
@@ -35697,30 +35727,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data() {
-    return {
-      lists: []
-    };
-  },
-  mounted() {
-    var self = this;
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
-      type: 'GET',
-      url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=10&client=somemessage&udid=dddddddddddddddddddddd",
+    data() {
+        return {
+            lists: []
+        };
+    },
+    mounted() {
+        var self = this;
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+            type: 'GET',
+            url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=10&client=somemessage&udid=dddddddddddddddddddddd",
 
-      dataType: "jsonp",
-      success: function (data) {
+            dataType: "jsonp",
+            success: function (data) {
 
-        self.lists = data.subjects;
-      }
-    });
-  },
-  methods: {
-    ok() {}
-  }
+                self.lists = data.subjects;
+            }
+        });
+    },
+    methods: {
+        ok() {}
+    }
 });
 
 /***/ }),
@@ -35736,6 +35767,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('mu-grid-tile', {
       key: index,
       staticClass: "todays"
+    }, [_c('a', {
+      attrs: {
+        "href": '#/detail/' + tile.id
+      }
     }, [_c('img', {
       attrs: {
         "src": tile.images.large
@@ -35743,7 +35778,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "touchmove": _vm.ok
       }
-    }), _vm._v(" "), _c('span', {
+    })]), _vm._v(" "), _c('span', {
       attrs: {
         "slot": "title"
       },
@@ -35832,7 +35867,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\n.tenter[data-v-9501f6e4]{padding:5px;\n}\n.stars[data-v-9501f6e4]{background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;height:8px;width:47px;margin-top:4px;\n}\n.NO[data-v-9501f6e4]{margin:5px 10px 0 5px;\n}\n.left[data-v-9501f6e4]{float:left;\n}\n.tenter[data-v-9501f6e4]{width:100%;overflow:hidden;\n}\n.demo-infinite-container[data-v-9501f6e4]{\r\n  height: 1113px !important;\r\n  /*overflow: auto;*/\r\n  -webkit-overflow-scrolling: touch;\r\n  border: none !important;\n}\n.pingfeng[data-v-9501f6e4]{margin-right:5px;\n}\n.details[data-v-9501f6e4]{margin-left: 30px;margin-top:30px;\n}\n.pingfeng [data-v-9501f6e4],.count[data-v-9501f6e4]{color:#ddd;font-size:9px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\na[data-v-9501f6e4]{\r\n  color: #333;\n}\n.tenter[data-v-9501f6e4] {\r\n    padding: 5px;\n}\n.stars[data-v-9501f6e4] {\r\n    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;\r\n    height: 8px;\r\n    width: 47px;\r\n    margin-top: 4px;\n}\n.NO[data-v-9501f6e4] {\r\n    margin: 5px 10px 0 5px;\n}\n.left[data-v-9501f6e4] {\r\n    float: left;\n}\n.tenter[data-v-9501f6e4] {\r\n    width: 100%;\r\n    overflow: hidden;\n}\n.demo-infinite-container[data-v-9501f6e4] {\r\n    height: 1113px !important;\r\n    /*overflow: auto;*/\r\n    -webkit-overflow-scrolling: touch;\r\n    border: none !important;\n}\n.pingfeng[data-v-9501f6e4] {\r\n    margin-right: 5px;\n}\n.details[data-v-9501f6e4] {\r\n    margin-left: 30px;\r\n    margin-top: 30px;\n}\n.pingfeng[data-v-9501f6e4],\r\n.count[data-v-9501f6e4] {\r\n    color: #ddd;\r\n    font-size: 9px;\n}\r\n", ""]);
 
 // exports
 
@@ -35869,54 +35904,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data() {
-    //const list = []
-    // for (let i = 0; i < 6; i++) {
-    //   list.push('item' + (i + 1))
-    // }
-    return {
-      //list,
-      lists: [],
-      num: 10,
-      start: 0,
-      loading: false,
-      scroller: null
-    };
-  },
-  methods: {
-    loadMore() {
-      this.loading = true;
-      setTimeout(() => {
-        // for (let i = this.num; i < this.num + 6; i++) {
-        //   this.list.push('item' + (i + 1))
+    data() {
+        //const list = []
+        // for (let i = 0; i < 6; i++) {
+        //   list.push('item' + (i + 1))
         // }
+        return {
+            //list,
+            lists: [],
+            num: 10,
+            start: 0,
+            loading: false,
+            scroller: null
+        };
+    },
+    methods: {
+        loadMore() {
+            this.loading = true;
+            setTimeout(() => {
+                // for (let i = this.num; i < this.num + 6; i++) {
+                //   this.list.push('item' + (i + 1))
+                // }
 
-        var self = this;
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
-          type: 'GET',
-          //url:"https://api.douban.com//v2/movie/top250?start="+self.start+"&count=10",
-          url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=10&client=somemessage&udid=dddddddddddddddddddddd",
-          dataType: "jsonp",
-          success: function (data) {
-            self.lists = data.subjects;
-            //self.lists = self.lists.concat(data.subjects);
-            self.start += 1;
-          }
-        });
+                var self = this;
+                __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+                    type: 'GET',
+                    //url:"https://api.douban.com//v2/movie/top250?start="+self.start+"&count=10",
+                    url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=10&client=somemessage&udid=dddddddddddddddddddddd",
+                    dataType: "jsonp",
+                    success: function (data) {
+                        self.lists = data.subjects;
+                        //self.lists = self.lists.concat(data.subjects);
+                        self.start += 1;
+                    }
+                });
 
-        this.num += 10;
-        this.loading = false;
-      }, 2000);
+                this.num += 10;
+                this.loading = false;
+            }, 2000);
+        }
+    },
+    mounted() {
+        //this.scroller = this.$el;
+        this.loadMore();
     }
-  },
-  mounted() {
-    //this.scroller = this.$el;
-    this.loadMore();
-  }
 });
 
 /***/ }),
@@ -35926,29 +35960,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "demo-infinite-container"
-  }, [_c('mu-list', [_vm._l((_vm.lists), function(item, index) {
-    return [_c('div', {
-      staticClass: "tenter"
-    }, [_c('div', {
-      staticClass: "NO left"
-    }, [_c('b', [_c('i', [_vm._v(_vm._s(index + 1))])])]), _vm._v(" "), _c('img', {
-      staticClass: "IMG left",
+  }, [_c('mu-list', _vm._l((_vm.lists), function(item, index) {
+    return _c('a', {
       attrs: {
-        "src": item.images.small,
-        "alt": ""
+        "href": '#/detail/' + item.id
       }
-    }), _vm._v(" "), _c('div', {
-      staticClass: "left details"
-    }, [_c('div', {
-      staticClass: "name"
-    }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('div', {
-      staticClass: "stars left"
-    }), _vm._v(" "), _c('div', {
-      staticClass: "pingfeng left"
-    }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
-      staticClass: "count left"
-    }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])]), _vm._v(" "), _c('mu-divider')]
-  })], 2)], 1)
+    }, [
+      [_c('div', {
+        staticClass: "tenter"
+      }, [_c('div', {
+        staticClass: "NO left"
+      }, [_c('b', [_c('i', [_vm._v(_vm._s(index + 1))])])]), _vm._v(" "), _c('img', {
+        staticClass: "IMG left",
+        attrs: {
+          "src": item.images.small,
+          "alt": ""
+        }
+      }), _vm._v(" "), _c('div', {
+        staticClass: "left details"
+      }, [_c('div', {
+        staticClass: "name"
+      }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('div', {
+        staticClass: "stars left"
+      }), _vm._v(" "), _c('div', {
+        staticClass: "pingfeng left"
+      }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
+        staticClass: "count left"
+      }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])]), _vm._v(" "), _c('mu-divider')]
+    ], 2)
+  }))], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -36031,7 +36071,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\n.tenter[data-v-4c5413a0]{padding:15px 5px;\n}\n.stars[data-v-4c5413a0]{background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;height:8px;width:47px;margin-top:4px;\n}\n.NO[data-v-4c5413a0]{margin:5px 10px 0 5px;\n}\n.left[data-v-4c5413a0]{float:left;\n}\n.tenter[data-v-4c5413a0]{width:100%;overflow:hidden;\n}\n.demo-infinite-container[data-v-4c5413a0]{\r\n  /*overflow: auto;*/\r\n  -webkit-overflow-scrolling: touch;\r\n  border: 1px solid #d9d9d9;\r\n  padding-bottom: 100px !important;\n}\n.anr[data-v-4c5413a0]{height:auto !important;\n}\n.pingfeng[data-v-4c5413a0]{margin-right:5px;\n}\n.details[data-v-4c5413a0]{margin-left: 30px;margin-top:10px;\n}\n.pingfeng [data-v-4c5413a0],.count[data-v-4c5413a0]{color:#ddd !important;font-size:9px !important;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\na[data-v-4c5413a0]{\r\n  color:#333;\n}\n.tenter[data-v-4c5413a0] {\r\n    padding: 15px 5px;\n}\n.stars[data-v-4c5413a0] {\r\n    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;\r\n    height: 8px;\r\n    width: 47px;\r\n    margin-top: 4px;\n}\n.NO[data-v-4c5413a0] {\r\n    margin: 5px 10px 0 5px;\n}\n.left[data-v-4c5413a0] {\r\n    float: left;\n}\n.tenter[data-v-4c5413a0] {\r\n    width: 100%;\r\n    overflow: hidden;\n}\n.demo-infinite-container[data-v-4c5413a0] {\r\n    /*overflow: auto;*/\r\n    -webkit-overflow-scrolling: touch;\r\n    border: 1px solid #d9d9d9;\r\n    padding-bottom: 100px !important;\n}\n.anr[data-v-4c5413a0] {\r\n    height: auto !important;\n}\n.pingfeng[data-v-4c5413a0] {\r\n    margin-right: 5px;\n}\n.details[data-v-4c5413a0] {\r\n    margin-left: 30px;\r\n    margin-top: 10px;\n}\n.pingfeng[data-v-4c5413a0],\r\n.count[data-v-4c5413a0] {\r\n    color: #ddd !important;\r\n    font-size: 9px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -36070,58 +36110,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data() {
-    //const list = []
-    // for (let i = 0; i < 6; i++) {
-    //   list.push('item' + (i + 1))
-    // }
-    return {
-      //list,
-      lists: [],
-      num: 20,
-      start: 10,
-      loading: false,
-      scroller: null
-    };
-  },
-  methods: {
-    loadMore() {
-      this.loading = true;
-      setTimeout(() => {
+    data() {
+        //const list = []
+        // for (let i = 0; i < 6; i++) {
+        //   list.push('item' + (i + 1))
+        // }
+        return {
+            //list,
+            lists: [],
+            num: 20,
+            start: 10,
+            loading: false,
+            scroller: null
+        };
+    },
+    methods: {
+        loadMore() {
+            this.loading = true;
+            setTimeout(() => {
 
-        var self = this;
-        if (self.start >= 130) {
-          return;
+                var self = this;
+                if (self.start >= 130) {
+                    return;
+                }
+                try {
+                    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+                        type: 'GET',
+                        //url:"https://api.douban.com//v2/movie/top250?start="+self.start+"&count=10",
+                        url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=" + self.start + "&count=" + self.num + "&client=somemessage&udid=dddddddddddddddddddddd",
+                        dataType: "jsonp",
+                        success: function (data) {
+                            // console.log(data.subjects);
+                            self.lists = data.subjects;
+                            // self.lists = self.lists.concat(data.subjects);
+                            self.start += 20;
+                        }
+                    });
+                } catch (e) {}
+
+                this.num += 10;
+                this.loading = false;
+            }, 5000);
         }
-        try {
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
-            type: 'GET',
-            //url:"https://api.douban.com//v2/movie/top250?start="+self.start+"&count=10",
-            url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=" + self.start + "&count=" + self.num + "&client=somemessage&udid=dddddddddddddddddddddd",
-            dataType: "jsonp",
-            success: function (data) {
-              // console.log(data.subjects);
-              self.lists = data.subjects;
-              // self.lists = self.lists.concat(data.subjects);
-              self.start += 20;
-            }
-          });
-        } catch (e) {}
-
-        this.num += 10;
-        this.loading = false;
-      }, 5000);
+    },
+    mounted() {
+        this.scroller = this.$el;
+        this.loadMore();
     }
-  },
-  mounted() {
-    this.scroller = this.$el;
-    this.loadMore();
-  }
 });
 
 /***/ }),
@@ -36131,31 +36169,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "demo-infinite-container anr"
-  }, [_c('mu-list', [_vm._l((_vm.lists), function(item, index) {
-    return [_c('div', {
-      staticClass: "tenter"
-    }, [_c('img', {
-      staticClass: "IMG left",
+  }, [_c('mu-list', _vm._l((_vm.lists), function(item, index) {
+    return _c('a', {
       attrs: {
-        "src": item.images.small,
-        "alt": ""
+        "href": '#/detail/' + item.id
       }
-    }), _vm._v(" "), _c('div', {
-      staticClass: "left details"
-    }, [_c('div', {
-      staticClass: "name"
-    }, [_vm._v(_vm._s(item.title ? item.title : "123"))]), _vm._v(" "), _c('div', {
-      staticClass: "year"
-    }, [_vm._v(_vm._s(item.year) + "/" + _vm._s(item.casts[0] ? item.casts[0].name_en : "未知") + "/" + _vm._s(item.genres[0]) + "/" + _vm._s(item.genres[1]))]), _vm._v(" "), _c('div', {
-      staticClass: "time"
-    }, [_vm._v("时长：" + _vm._s(item.durations[0]))]), _vm._v(" "), _c('div', {
-      staticClass: "stars left"
-    }), _vm._v(" "), _c('div', {
-      staticClass: "pingfeng left"
-    }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
-      staticClass: "count left"
-    }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])]), _vm._v(" "), _c('mu-divider')]
-  })], 2), _vm._v(" "), _c('mu-infinite-scroll', {
+    }, [
+      [_c('div', {
+        staticClass: "tenter"
+      }, [_c('img', {
+        staticClass: "IMG left",
+        attrs: {
+          "src": item.images.small,
+          "alt": ""
+        }
+      }), _vm._v(" "), _c('div', {
+        staticClass: "left details"
+      }, [_c('div', {
+        staticClass: "name"
+      }, [_vm._v(_vm._s(item.title ? item.title : "123"))]), _vm._v(" "), _c('div', {
+        staticClass: "year"
+      }, [_vm._v(_vm._s(item.year) + "/" + _vm._s(item.casts[0] ? item.casts[0].name_en : "未知") + "/" + _vm._s(item.genres[0]) + "/" + _vm._s(item.genres[1]))]), _vm._v(" "), _c('div', {
+        staticClass: "time"
+      }, [_vm._v("时长：" + _vm._s(item.durations[0]))]), _vm._v(" "), _c('div', {
+        staticClass: "stars left"
+      }), _vm._v(" "), _c('div', {
+        staticClass: "pingfeng left"
+      }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
+        staticClass: "count left"
+      }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])]), _vm._v(" "), _c('mu-divider')]
+    ], 2)
+  })), _vm._v(" "), _c('mu-infinite-scroll', {
     attrs: {
       "scroller": _vm.scroller,
       "loading": _vm.loading
@@ -36409,7 +36453,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\n.tenter[data-v-7f903e98]{padding:15px 5px;\n}\n.stars[data-v-7f903e98]{background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;height:8px;width:47px;margin-top:4px;\n}\n.NO[data-v-7f903e98]{margin:5px 10px 0 5px;\n}\n.left[data-v-7f903e98]{float:left;\n}\n.tenter[data-v-7f903e98]{width:100%;overflow:hidden;\n}\n.demo-infinite-container[data-v-7f903e98]{\r\n  /*overflow: auto;*/\r\n  -webkit-overflow-scrolling: touch;\r\n  border: 1px solid #d9d9d9;\r\n  padding-bottom: 100px !important;\n}\n.anr[data-v-7f903e98]{height:auto !important;\n}\n.pingfeng[data-v-7f903e98]{margin-right:5px;\n}\n.details[data-v-7f903e98]{margin-left: 30px;margin-top:10px;\n}\n.pingfeng [data-v-7f903e98],.count[data-v-7f903e98]{color:#ddd !important;font-size:9px !important;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\na[data-v-7f903e98]{\r\n  color: #333;\n}\n.tenter[data-v-7f903e98] {\r\n    padding: 15px 5px;\n}\n.stars[data-v-7f903e98] {\r\n    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;\r\n    height: 8px;\r\n    width: 47px;\r\n    margin-top: 4px;\n}\n.NO[data-v-7f903e98] {\r\n    margin: 5px 10px 0 5px;\n}\n.left[data-v-7f903e98] {\r\n    float: left;\n}\n.tenter[data-v-7f903e98] {\r\n    width: 100%;\r\n    overflow: hidden;\n}\n.demo-infinite-container[data-v-7f903e98] {\r\n    /*overflow: auto;*/\r\n    -webkit-overflow-scrolling: touch;\r\n    border: 1px solid #d9d9d9;\r\n    padding-bottom: 100px !important;\n}\n.anr[data-v-7f903e98] {\r\n    height: auto !important;\n}\n.pingfeng[data-v-7f903e98] {\r\n    margin-right: 5px;\n}\n.details[data-v-7f903e98] {\r\n    margin-left: 30px;\r\n    margin-top: 10px;\n}\n.pingfeng[data-v-7f903e98],\r\n.count[data-v-7f903e98] {\r\n    color: #ddd !important;\r\n    font-size: 9px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -36449,58 +36493,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data() {
-    //const list = []
-    // for (let i = 0; i < 6; i++) {
-    //   list.push('item' + (i + 1))
-    // }
-    return {
-      //list,
-      lists: [],
-      num: 20,
-      start: 20,
-      loading: false,
-      scroller: null
-    };
-  },
-  methods: {
-    loadMore() {
-      this.loading = true;
-      setTimeout(() => {
+    data() {
+        //const list = []
+        // for (let i = 0; i < 6; i++) {
+        //   list.push('item' + (i + 1))
+        // }
+        return {
+            //list,
+            lists: [],
+            num: 20,
+            start: 20,
+            loading: false,
+            scroller: null
+        };
+    },
+    methods: {
+        loadMore() {
+            this.loading = true;
+            setTimeout(() => {
 
-        var self = this;
-        if (self.start >= 130) {
-          return;
+                var self = this;
+                if (self.start >= 130) {
+                    return;
+                }
+                try {
+                    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
+                        type: 'GET',
+                        //url:"https://api.douban.com//v2/movie/top250?start="+self.start+"&count=10",
+                        url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=" + self.start + "&count=" + self.num + "&client=somemessage&udid=dddddddddddddddddddddd",
+                        dataType: "jsonp",
+                        success: function (data) {
+                            // console.log(data.subjects);
+                            self.lists = data.subjects;
+                            // self.lists = self.lists.concat(data.subjects);
+                            self.start += 20;
+                        }
+                    });
+                } catch (e) {}
+
+                this.num += 10;
+                this.loading = false;
+            }, 5000);
         }
-        try {
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
-            type: 'GET',
-            //url:"https://api.douban.com//v2/movie/top250?start="+self.start+"&count=10",
-            url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=" + self.start + "&count=" + self.num + "&client=somemessage&udid=dddddddddddddddddddddd",
-            dataType: "jsonp",
-            success: function (data) {
-              // console.log(data.subjects);
-              self.lists = data.subjects;
-              // self.lists = self.lists.concat(data.subjects);
-              self.start += 20;
-            }
-          });
-        } catch (e) {}
-
-        this.num += 10;
-        this.loading = false;
-      }, 5000);
+    },
+    mounted() {
+        this.scroller = this.$el;
+        this.loadMore();
     }
-  },
-  mounted() {
-    this.scroller = this.$el;
-    this.loadMore();
-  }
 });
 
 /***/ }),
@@ -36510,29 +36552,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "demo-infinite-container anr"
-  }, [_c('mu-list', [_vm._l((_vm.lists), function(item, index) {
-    return [_c('div', {
-      staticClass: "tenter"
-    }, [_c('img', {
-      staticClass: "IMG left",
+  }, [_c('mu-list', _vm._l((_vm.lists), function(item, index) {
+    return _c('a', {
       attrs: {
-        "src": item.images.small,
-        "alt": ""
+        "href": '#/detail/' + item.id
       }
-    }), _vm._v(" "), _c('div', {
-      staticClass: "left details"
-    }, [_c('div', {
-      staticClass: "name"
-    }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('div', [_vm._v("主演：" + _vm._s(item.casts[0] ? item.casts[0].name_en : "未知"))]), _vm._v(" "), _c('div', {
-      staticClass: "year"
-    }, [_vm._v("类型：" + _vm._s(item.genres[0]) + "/" + _vm._s(item.genres[1]))]), _vm._v(" "), _c('div', {
-      staticClass: "stars left"
-    }), _vm._v(" "), _c('div', {
-      staticClass: "pingfeng left"
-    }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
-      staticClass: "count left"
-    }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])]), _vm._v(" "), _c('mu-divider')]
-  })], 2), _vm._v(" "), _c('mu-infinite-scroll', {
+    }, [
+      [_c('div', {
+        staticClass: "tenter"
+      }, [_c('img', {
+        staticClass: "IMG left",
+        attrs: {
+          "src": item.images.small,
+          "alt": ""
+        }
+      }), _vm._v(" "), _c('div', {
+        staticClass: "left details"
+      }, [_c('div', {
+        staticClass: "name"
+      }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('div', [_vm._v("主演：" + _vm._s(item.casts[0] ? item.casts[0].name_en : "未知"))]), _vm._v(" "), _c('div', {
+        staticClass: "year"
+      }, [_vm._v("类型：" + _vm._s(item.genres[0]) + "/" + _vm._s(item.genres[1]))]), _vm._v(" "), _c('div', {
+        staticClass: "stars left"
+      }), _vm._v(" "), _c('div', {
+        staticClass: "pingfeng left"
+      }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
+        staticClass: "count left"
+      }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])]), _vm._v(" "), _c('mu-divider')]
+    ], 2)
+  })), _vm._v(" "), _c('mu-infinite-scroll', {
     attrs: {
       "scroller": _vm.scroller,
       "loading": _vm.loading

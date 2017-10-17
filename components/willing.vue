@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div v-for="(val,key) in movieObjs">
+        <div v-for="(val,key) in movieObjs" v-if="!showFlag">
             <div class="classTitle">{{key}}</div>
             <a :href="'#/detail/'+value.id" v-for="value in val">
                 <div class="hotMovie">
@@ -38,13 +38,15 @@
                 </div>
             </a>
         </div>
+        <mu-circular-progress :size="40" color="green" v-if="showFlag" />
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            movieObj: {}
+            movieObj: {},
+            showFlag: true
         }
     },
     computed: {
@@ -55,6 +57,7 @@ export default {
     mounted() {
         if (sessionStorage.getItem('willing')) {
             this.movieObj = JSON.parse(sessionStorage.getItem('willing'));
+            this.showFlag = false;
         } else {
             jsonp('https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=100', null, (err, data) => {
                 if (err) {
@@ -82,6 +85,7 @@ export default {
                     this.movieObj = strMapToObj(movieMap);
 
                     sessionStorage.setItem('willing', JSON.stringify(this.movieObj));
+                    this.showFlag = false;
 
 
                     function strMapToObj(strMap) {
@@ -130,9 +134,8 @@ export default {
     },
     filters: {
         number: function(value) {
-            if(value<9999) return value;
-            else{return (value/10000).toFixed(1)+"万"}
-            
+            if (value < 9999) return value;
+            else { return (value / 10000).toFixed(1) + "万" }
         }
     }
 }
@@ -143,7 +146,10 @@ $buttonColor:#ffb300;
 a {
     color: #333
 }
-
+.mu-circular-progress{
+    margin: 30px auto;
+    display: block;
+}
 .hotBackground {
     left: 0;
     right: 0;

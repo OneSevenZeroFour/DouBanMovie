@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a :href="'#/detail/'+m.id" v-for="m in subjects">
+        <a :href="'#/detail/'+m.id" v-for="m in subjects" v-if="!showFlag">
             <div class="hotMovie">
                 <img :src="m.images.small" :alt="m.title" style="float:left;">
                 <ul class="hotDetail">
@@ -43,21 +43,34 @@
                 </ul>
             </div>
         </a>
+        <mu-circular-progress :size="40" color="green" v-if="showFlag" />
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            subjects: []
+            subjects: [],
+            showFlag: true,
+            page: 1,
+            count: 20
         }
     },
-    computed: {
-
+    methods: {
+        loadMore() {
+            jsonp(`https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start={(page-1)*count}&count=20`, null, (err, data) => {
+                if (err) {
+                    console.error(err.message);
+                } else {
+                    this.subjects.concat(data.subjects);
+                };
+            })
+        }
     },
     mounted() {
         if (sessionStorage.getItem('hotting')) {
             this.subjects = JSON.parse(sessionStorage.getItem('hotting'));
+            this.showFlag = false;
         } else {
             jsonp('https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=20', null, (err, data) => {
                 if (err) {
@@ -65,6 +78,7 @@ export default {
                 } else {
                     this.subjects = data.subjects;
                     sessionStorage.setItem('hotting', JSON.stringify(data.subjects));
+                    this.showFlag = false;
                 }
             });
 
@@ -72,9 +86,9 @@ export default {
     },
     filters: {
         number: function(value) {
-            if(value<9999) return value;
-            else{return (value/10000).toFixed(1)+"万"}
-            
+            if (value < 9999) return value;
+            else { return (value / 10000).toFixed(1) + "万" }
+
         }
     }
 }
@@ -82,6 +96,11 @@ export default {
 <style scoped lang="sass">
 a {
     color: #333;
+}
+
+.mu-circular-progress {
+    margin: 30px auto;
+    display: block;
 }
 
 .hotDetail {
