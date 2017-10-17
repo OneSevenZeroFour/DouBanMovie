@@ -42,9 +42,5 @@ module.exports = {
   },
   plugins: [
     new webpack.BannerPlugin(`This file is created by JasonTan`),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    })
   ]
 }

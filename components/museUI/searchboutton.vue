@@ -6,13 +6,15 @@
 		      <mu-icon value="expand_more" color="#aaa" />
 		    </div>
 		  </div>
-		  <div class="search">
-				<div class="button">
-					<div class="icon-contaner">
-			      <mu-icon value="search" color="#aaa" :size="20"/>
-			    </div>电影 / 电视剧 / 影人
-				</div>
-			</div>
+		  <a href="#/search">
+			  <div class="search">
+					<div class="button">
+						<div class="icon-contaner">
+					      <mu-icon value="search" color="#aaa" :size="20"/>
+					    </div>电影 / 电视剧 / 影人
+					</div>
+			  </div>
+		  </a>
 		</div>
 	</div>
 </template>
