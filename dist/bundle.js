@@ -36214,6 +36214,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted() {
     console.log(this);
     var self = this;
+
     __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({
       type: 'GET',
       url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=10&count=30&client=somemessage&udid=dddddddddddddddddddddd",
