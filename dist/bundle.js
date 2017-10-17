@@ -34592,7 +34592,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\n.hotDetail[data-v-c39e161c] {\n  float: left;\n  list-style: none;\n  margin: 0;\n  padding: 0 20px;\n  width: 57%;\n}\n.hotMovie[data-v-c39e161c] {\n  padding: 10px;\n  overflow: hidden;\n  border-bottom: 1px solid #eee;\n}\n.hotDetailButton[data-v-c39e161c] {\n  list-style: none;\n  float: right;\n  padding: 0;\n  width: 21%;\n  text-align: center;\n  vertical-align: middle;\n  margin: 25px 0 0;\n  color: #ff1744;\n}\n.text-style[data-v-c39e161c] {\n  font-size: 8px;\n  color: #888;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n}\n.button[data-v-c39e161c] {\n  width: 100%;\n  border: 1px solid #ff4081;\n  border-radius: 3px;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-c39e161c] {\n  color: #333;\n}\n.hotDetail[data-v-c39e161c] {\n  float: left;\n  list-style: none;\n  margin: 0;\n  padding: 0 20px;\n  width: 57%;\n}\n.hotMovie[data-v-c39e161c] {\n  padding: 10px;\n  overflow: hidden;\n  border-bottom: 1px solid #eee;\n}\n.hotDetailButton[data-v-c39e161c] {\n  list-style: none;\n  float: right;\n  padding: 0;\n  width: 21%;\n  text-align: center;\n  vertical-align: middle;\n  margin: 25px 0 0;\n  color: #ff1744;\n}\n.text-style[data-v-c39e161c] {\n  font-size: 8px;\n  color: #888;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n}\n.button[data-v-c39e161c] {\n  width: 100%;\n  border: 1px solid #ff4081;\n  border-radius: 3px;\n}\n", ""]);
 
 // exports
 
@@ -34648,6 +34648,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data() {
@@ -34657,13 +34659,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {},
     mounted() {
-        jsonp('https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=20', null, (err, data) => {
-            if (err) {
-                console.error(err.message);
-            } else {
-                this.subjects = data.subjects;
-            }
-        });
+        if (sessionStorage.getItem('hotting')) {
+            this.subjects = JSON.parse(sessionStorage.getItem('hotting'));
+        } else {
+            jsonp('https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=20', null, (err, data) => {
+                if (err) {
+                    console.error(err.message);
+                } else {
+                    this.subjects = data.subjects;
+                    sessionStorage.setItem('hotting', JSON.stringify(data.subjects));
+                }
+            });
+        }
     }
 });
 
@@ -34673,7 +34680,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', _vm._l((_vm.subjects), function(m) {
-    return _c('div', {
+    return _c('a', {
+      attrs: {
+        "href": '#/detail/' + m.id
+      }
+    }, [_c('div', {
       staticClass: "hotMovie"
     }, [_c('img', {
       staticStyle: {
@@ -34802,12 +34813,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticStyle: {
         "font-size": "9px"
       }
-    }, [_vm._v(_vm._s(m.collect_count) + "人看过")]), _vm._v(" "), _vm._m(0, true)])])
+    }, [_vm._v(_vm._s(m.collect_count) + "人看过")]), _vm._v(" "), _vm._m(0, true)])])])
   }))
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('div', {
     staticClass: "button"
-  }, [_vm._v("\n                    购票\n                ")])])
+  }, [_vm._v("\n                        购票\n                    ")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -34890,7 +34901,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\n.hotBackground[data-v-869c2ef2] {\n  left: 0;\n  right: 0;\n  background-color: #fff;\n  z-index: 9;\n  height: 40px;\n  line-height: 40px;\n}\n.hotDetail[data-v-869c2ef2] {\n  float: left;\n  list-style: none;\n  margin: 0;\n  padding: 0 20px;\n  width: 57%;\n}\n.hotMovie[data-v-869c2ef2] {\n  padding: 10px;\n  overflow: hidden;\n  border-bottom: 1px solid #eee;\n}\n.hotDetailButton[data-v-869c2ef2] {\n  list-style: none;\n  float: right;\n  padding: 0;\n  width: 21%;\n  text-align: center;\n  vertical-align: middle;\n  margin: 25px 0 0;\n  color: #ffb300;\n}\n.text-style[data-v-869c2ef2] {\n  font-size: 8px;\n  color: #888;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n}\n.button[data-v-869c2ef2] {\n  width: 100%;\n  border: 1px solid #ffb300;\n  border-radius: 3px;\n}\n.classTitle[data-v-869c2ef2] {\n  background-color: #eee;\n  color: #888;\n  padding: 5px 10px;\n  font-size: 0.7rem;\n}\n.filter[data-v-869c2ef2] {\n  overflow: hidden;\n  width: 95%;\n  margin: 0 auto;\n  color: #ddd;\n}\n.filter .leftFilter[data-v-869c2ef2] {\n    float: left;\n}\n.filter .rightFilter[data-v-869c2ef2] {\n    float: right;\n}\n.filter span[data-v-869c2ef2] {\n    padding: 2px 3px;\n    font-size: 0.9rem;\n}\n.filter .highlight-text[data-v-869c2ef2] {\n    color: #333;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-869c2ef2] {\n  color: #333;\n}\n.hotBackground[data-v-869c2ef2] {\n  left: 0;\n  right: 0;\n  background-color: #fff;\n  z-index: 9;\n  height: 40px;\n  line-height: 40px;\n}\n.hotDetail[data-v-869c2ef2] {\n  float: left;\n  list-style: none;\n  margin: 0;\n  padding: 0 20px;\n  width: 57%;\n}\n.hotMovie[data-v-869c2ef2] {\n  padding: 10px;\n  overflow: hidden;\n  border-bottom: 1px solid #eee;\n}\n.hotDetailButton[data-v-869c2ef2] {\n  list-style: none;\n  float: right;\n  padding: 0;\n  width: 21%;\n  text-align: center;\n  vertical-align: middle;\n  margin: 25px 0 0;\n  color: #ffb300;\n}\n.text-style[data-v-869c2ef2] {\n  font-size: 8px;\n  color: #888;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n}\n.button[data-v-869c2ef2] {\n  width: 100%;\n  border: 1px solid #ffb300;\n  border-radius: 3px;\n}\n.classTitle[data-v-869c2ef2] {\n  background-color: #eee;\n  color: #888;\n  padding: 5px 10px;\n  font-size: 0.7rem;\n}\n.filter[data-v-869c2ef2] {\n  overflow: hidden;\n  width: 95%;\n  margin: 0 auto;\n  color: #ddd;\n}\n.filter .leftFilter[data-v-869c2ef2] {\n    float: left;\n}\n.filter .rightFilter[data-v-869c2ef2] {\n    float: right;\n}\n.filter span[data-v-869c2ef2] {\n    padding: 2px 3px;\n    font-size: 0.9rem;\n}\n.filter .highlight-text[data-v-869c2ef2] {\n    color: #333;\n}\n", ""]);
 
 // exports
 
@@ -34941,6 +34952,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data() {
@@ -34951,76 +34964,86 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         movieObjs() {
             return this.movieObj;
-        }
+        },
+        number() {}
     },
     mounted() {
-        jsonp('https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=100', null, (err, data) => {
-            if (err) {
-                console.error(err.message);
-            } else {
-                let dateSet = new Set();
-                let movieArr = [];
-                let timeStr = "";
-                data.subjects.forEach((e, i) => {
-                    // console.log(e.mainland_pubdate);
-                    if (timeStr === e.mainland_pubdate) {
-                        movieArr.push(e);
-                    } else {
-                        movieArr = [];
-                        movieArr.push(e);
-                        timeStr = e.mainland_pubdate;
-                    }
-                    if (!e.mainland_pubdate) {
-                        dateSet.add(["即将到来", movieArr]);
-                        return;
-                    }
-                    dateSet.add([resetTime(timeStr), movieArr]);
-                });
-                const movieMap = new Map(dateSet);
-                this.movieObj = strMapToObj(movieMap);
+        if (sessionStorage.getItem('willing')) {
+            this.movieObj = JSON.parse(sessionStorage.getItem('willing'));
+        } else {
+            jsonp('https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=100', null, (err, data) => {
+                if (err) {
+                    console.error(err.message);
+                } else {
 
-                function strMapToObj(strMap) {
-                    let obj = Object.create(null);
-                    for (let [k, v] of strMap) {
-                        obj[k] = v;
-                    }
-                    return obj;
-                }
+                    let dateSet = new Set();
+                    let movieArr = [];
+                    let timeStr = "";
+                    data.subjects.forEach((e, i) => {
+                        // console.log(e.mainland_pubdate);
+                        if (timeStr === e.mainland_pubdate) {
+                            movieArr.push(e);
+                        } else {
+                            movieArr = [];
+                            movieArr.push(e);
+                            timeStr = e.mainland_pubdate;
+                        }
+                        if (!e.mainland_pubdate) {
+                            dateSet.add(["即将到来", movieArr]);
+                            return;
+                        }
+                        dateSet.add([resetTime(timeStr), movieArr]);
+                    });
+                    const movieMap = new Map(dateSet);
+                    this.movieObj = strMapToObj(movieMap);
 
-                function resetTime(str) {
-                    let timeArr = str.split("-");
-                    let timeObj = new Date();
-                    timeObj.setFullYear(timeArr[0], timeArr[1], timeArr[2]);
-                    let timeStr = timeObj.toString().slice(0, 3);
-                    let week = "几";
-                    switch (timeStr) {
-                        case "Mon":
-                            week = "一";
-                            break;
-                        case "Tue":
-                            week = "二";
-                            break;
-                        case "Wes":
-                            week = "三";
-                            break;
-                        case "Fur":
-                            week = "四";
-                            break;
-                        case "Fri":
-                            week = "五";
-                            break;
-                        case "Sat":
-                            week = "六";
-                            break;
-                        case "Sun":
-                            week = "日";
-                            break;
+                    sessionStorage.setItem('willing', JSON.stringify(this.movieObj));
+
+                    console.log(this.this.movieObj);
+
+                    function strMapToObj(strMap) {
+                        let obj = Object.create(null);
+                        for (let [k, v] of strMap) {
+                            obj[k] = v;
+                        }
+                        return obj;
                     }
-                    str = timeArr[0] + "年" + timeArr[1] + "月" + timeArr[2] + "日，星期" + week;
-                    return str;
+
+                    function resetTime(str) {
+                        let timeArr = str.split("-");
+                        let timeObj = new Date();
+                        timeObj.setFullYear(timeArr[0], timeArr[1], timeArr[2]);
+                        let timeStr = timeObj.toString().slice(0, 3);
+                        let week = "几";
+                        switch (timeStr) {
+                            case "Mon":
+                                week = "一";
+                                break;
+                            case "Tue":
+                                week = "二";
+                                break;
+                            case "Wes":
+                                week = "三";
+                                break;
+                            case "Fur":
+                                week = "四";
+                                break;
+                            case "Fri":
+                                week = "五";
+                                break;
+                            case "Sat":
+                                week = "六";
+                                break;
+                            case "Sun":
+                                week = "日";
+                                break;
+                        }
+                        str = timeArr[0] + "年" + timeArr[1] + "月" + timeArr[2] + "日，星期" + week;
+                        return str;
+                    }
                 }
-            }
-        });
+            });
+        };
     }
 });
 
@@ -35033,7 +35056,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('div', [_c('div', {
       staticClass: "classTitle"
     }, [_vm._v(_vm._s(key))]), _vm._v(" "), _vm._l((val), function(value) {
-      return _c('div', {
+      return _c('a', {
+        attrs: {
+          "href": '#/detail/' + value.id
+        }
+      }, [_c('div', {
         staticClass: "hotMovie"
       }, [_c('img', {
         staticStyle: {
@@ -35063,7 +35090,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         staticStyle: {
           "font-size": "9px"
         }
-      }, [_vm._v(_vm._s(value.collect_count) + "人想看")]), _vm._v(" "), _vm._m(1, true)])])
+      }, [_vm._v(_vm._s(value.collect_count) + "人想看")]), _vm._v(" "), _vm._m(1, true)])])])
     })], 2)
   })], 2)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -35083,7 +35110,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('div', {
     staticClass: "button"
-  }, [_vm._v("\n                        想看\n                    ")])])
+  }, [_vm._v("\n                            想看\n                        ")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

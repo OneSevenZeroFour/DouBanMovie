@@ -1,46 +1,48 @@
 <template>
     <div>
-        <div v-for="m in subjects" class="hotMovie">
-            <img :src="m.images.small" :alt="m.title" style="float:left;">
-            <ul class="hotDetail">
-                <li style="font-size:1.2rem">{{m.title}}</li>
-                <li class="text-style">
-                    <div class="icon-contaner" v-if="m.rating.average>0">
-                        <span v-if="m.rating.stars>10"><mu-icon value="star" color="#ffb300" :size="12.5" /></span>
-                        <span v-else-if="m.rating.stars>=5"><mu-icon value="star_half" color="#ffb300" :size="12.5" /></span>
-                        <span v-else><mu-icon value="star_border" color="#ffb300" :size="12.5" /></span>
-                        <span v-if="m.rating.stars>20"><mu-icon value="star" color="#ffb300" :size="12.5" /></span>
-                        <span v-else-if="m.rating.stars>=15"><mu-icon value="star_half" color="#ffb300" :size="12.5" /></span>
-                        <span v-else><mu-icon value="star_border" color="#ffb300" :size="12.5" /></span>
-                        <span v-if="m.rating.stars>30"><mu-icon value="star" color="#ffb300" :size="12.5" /></span>
-                        <span v-else-if="m.rating.stars>=25"><mu-icon value="star_half" color="#ffb300" :size="12.5" /></span>
-                        <span v-else><mu-icon value="star_border" color="#ffb300" :size="12.5" /></span>
-                        <span v-if="m.rating.stars>40"><mu-icon value="star" color="#ffb300" :size="12.5" /></span>
-                        <span v-else-if="m.rating.stars>=35"><mu-icon value="star_half" color="#ffb300" :size="12.5" /></span>
-                        <span v-else><mu-icon value="star_border" color="#ffb300" :size="12.5" /></span>
-                        <span v-if="m.rating.stars>=50"><mu-icon value="star" color="#ffb300" :size="12.5" /></span>
-                        <span v-else-if="m.rating.stars>=45"><mu-icon value="star_half" color="#ffb300" :size="12.5" /></span>
-                        <span v-else><mu-icon value="star_border" color="#ffb300" :size="12.5" /></span>
-                        <span style="position:relative;top:-1.8px">{{m.rating.average}}</span>
-                    </div>
-                    <div v-else>
-                        <span>暂无评分</span>
-                    </div>
-                </li>
-                <li class="text-style">导演：<span v-for="(n,index) in m.directors">{{n.name}}<span v-if="index<m.directors.length-1">/</span></span>
-                </li>
-                <li class="text-style">主演：<span v-for="(l,index) in m.casts">{{l.name}}<span v-if="index<m.casts.length-1">/</span></span>
-                </li>
-            </ul>
-            <ul class="hotDetailButton">
-                <li style="font-size:9px">{{m.collect_count}}人看过</li>
-                <li>
-                    <div class="button">
-                        购票
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <a :href="'#/detail/'+m.id" v-for="m in subjects">
+            <div class="hotMovie">
+                <img :src="m.images.small" :alt="m.title" style="float:left;">
+                <ul class="hotDetail">
+                    <li style="font-size:1.2rem">{{m.title}}</li>
+                    <li class="text-style">
+                        <div class="icon-contaner" v-if="m.rating.average>0">
+                            <span v-if="m.rating.stars>10"><mu-icon value="star" color="#ffb300" :size="12.5" /></span>
+                            <span v-else-if="m.rating.stars>=5"><mu-icon value="star_half" color="#ffb300" :size="12.5" /></span>
+                            <span v-else><mu-icon value="star_border" color="#ffb300" :size="12.5" /></span>
+                            <span v-if="m.rating.stars>20"><mu-icon value="star" color="#ffb300" :size="12.5" /></span>
+                            <span v-else-if="m.rating.stars>=15"><mu-icon value="star_half" color="#ffb300" :size="12.5" /></span>
+                            <span v-else><mu-icon value="star_border" color="#ffb300" :size="12.5" /></span>
+                            <span v-if="m.rating.stars>30"><mu-icon value="star" color="#ffb300" :size="12.5" /></span>
+                            <span v-else-if="m.rating.stars>=25"><mu-icon value="star_half" color="#ffb300" :size="12.5" /></span>
+                            <span v-else><mu-icon value="star_border" color="#ffb300" :size="12.5" /></span>
+                            <span v-if="m.rating.stars>40"><mu-icon value="star" color="#ffb300" :size="12.5" /></span>
+                            <span v-else-if="m.rating.stars>=35"><mu-icon value="star_half" color="#ffb300" :size="12.5" /></span>
+                            <span v-else><mu-icon value="star_border" color="#ffb300" :size="12.5" /></span>
+                            <span v-if="m.rating.stars>=50"><mu-icon value="star" color="#ffb300" :size="12.5" /></span>
+                            <span v-else-if="m.rating.stars>=45"><mu-icon value="star_half" color="#ffb300" :size="12.5" /></span>
+                            <span v-else><mu-icon value="star_border" color="#ffb300" :size="12.5" /></span>
+                            <span style="position:relative;top:-1.8px">{{m.rating.average}}</span>
+                        </div>
+                        <div v-else>
+                            <span>暂无评分</span>
+                        </div>
+                    </li>
+                    <li class="text-style">导演：<span v-for="(n,index) in m.directors">{{n.name}}<span v-if="index<m.directors.length-1">/</span></span>
+                    </li>
+                    <li class="text-style">主演：<span v-for="(l,index) in m.casts">{{l.name}}<span v-if="index<m.casts.length-1">/</span></span>
+                    </li>
+                </ul>
+                <ul class="hotDetailButton">
+                    <li style="font-size:9px">{{m.collect_count}}人看过</li>
+                    <li>
+                        <div class="button">
+                            购票
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </a>
     </div>
 </template>
 <script>
@@ -54,17 +56,27 @@ export default {
 
     },
     mounted() {
-        jsonp('https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=20', null, (err, data) => {
-            if (err) {
-                console.error(err.message);
-            } else {
-                this.subjects = data.subjects;
-            }
-        });
+        if (sessionStorage.getItem('hotting')) {
+            this.subjects = JSON.parse(sessionStorage.getItem('hotting'));
+        } else {
+            jsonp('https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=20', null, (err, data) => {
+                if (err) {
+                    console.error(err.message);
+                } else {
+                    this.subjects = data.subjects;
+                    sessionStorage.setItem('hotting', JSON.stringify(data.subjects));
+                }
+            });
+
+        }
     }
 }
 </script>
 <style scoped lang="sass">
+a {
+    color: #333;
+}
+
 .hotDetail {
     float: left;
     list-style: none;

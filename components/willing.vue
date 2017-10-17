@@ -17,24 +17,26 @@
         </div>
         <div v-for="(val,key) in movieObjs">
             <div class="classTitle">{{key}}</div>
-            <div v-for="value in val" class="hotMovie">
-                <img :src="value.images.small" :alt="value.title" style="float:left;">
-                <ul class="hotDetail">
-                    <li style="font-size:1.2rem">{{value.title}}</li>
-                    <li class="text-style">导演：<span v-for="(n,index) in value.directors">{{n.name}}<span v-if="index<value.directors.length-1">/</span></span>
-                    </li>
-                    <li class="text-style">主演：<span v-for="(l,index) in value.casts">{{l.name}}<span v-if="index<value.casts.length-1">/</span></span>
-                    </li>
-                </ul>
-                <ul class="hotDetailButton">
-                    <li style="font-size:9px">{{value.collect_count}}人想看</li>
-                    <li>
-                        <div class="button">
-                            想看
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <a :href="'#/detail/'+value.id" v-for="value in val">
+                <div class="hotMovie">
+                    <img :src="value.images.small" :alt="value.title" style="float:left;">
+                    <ul class="hotDetail">
+                        <li style="font-size:1.2rem">{{value.title}}</li>
+                        <li class="text-style">导演：<span v-for="(n,index) in value.directors">{{n.name}}<span v-if="index<value.directors.length-1">/</span></span>
+                        </li>
+                        <li class="text-style">主演：<span v-for="(l,index) in value.casts">{{l.name}}<span v-if="index<value.casts.length-1">/</span></span>
+                        </li>
+                    </ul>
+                    <ul class="hotDetailButton">
+                        <li style="font-size:9px">{{value.collect_count}}人想看</li>
+                        <li>
+                            <div class="button">
+                                想看
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </a>
         </div>
     </div>
 </template>
@@ -48,83 +50,99 @@ export default {
     computed: {
         movieObjs() {
             return this.movieObj;
+        },
+        number(){
         }
     },
     mounted() {
-        jsonp('https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=100', null, (err, data) => {
-            if (err) {
-                console.error(err.message);
-            } else {
-                let dateSet = new Set();
-                let movieArr = [];
-                let timeStr = "";
-                data.subjects.forEach((e, i) => {
-                    // console.log(e.mainland_pubdate);
-                    if (timeStr === e.mainland_pubdate) {
-                        movieArr.push(e);
-                    } else {
-                        movieArr = [];
-                        movieArr.push(e);
-                        timeStr = e.mainland_pubdate
-                    }
-                    if (!e.mainland_pubdate) {
-                        dateSet.add(["即将到来", movieArr])
-                        return;
-                    }
-                    dateSet.add([resetTime(timeStr), movieArr])
-                })
-                const movieMap = new Map(dateSet);
-                this.movieObj = strMapToObj(movieMap)
+        if (sessionStorage.getItem('willing')) {
+            this.movieObj = JSON.parse(sessionStorage.getItem('willing'));
+        }
+        else {
+            jsonp('https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=100', null, (err, data) => {
+                if (err) {
+                    console.error(err.message);
+                } else {
 
-                function strMapToObj(strMap) {
-                    let obj = Object.create(null);
-                    for (let [k, v] of strMap) {
-                        obj[k] = v;
-                    }
-                    return obj;
-                }
+                    let dateSet = new Set();
+                    let movieArr = [];
+                    let timeStr = "";
+                    data.subjects.forEach((e, i) => {
+                        // console.log(e.mainland_pubdate);
+                        if (timeStr === e.mainland_pubdate) {
+                            movieArr.push(e);
+                        } else {
+                            movieArr = [];
+                            movieArr.push(e);
+                            timeStr = e.mainland_pubdate
+                        }
+                        if (!e.mainland_pubdate) {
+                            dateSet.add(["即将到来", movieArr])
+                            return;
+                        }
+                        dateSet.add([resetTime(timeStr), movieArr])
+                    })
+                    const movieMap = new Map(dateSet);
+                    this.movieObj = strMapToObj(movieMap);
 
-                function resetTime(str) {
-                    let timeArr = str.split("-");
-                    let timeObj = new Date();
-                    timeObj.setFullYear(timeArr[0], timeArr[1], timeArr[2]);
-                    let timeStr = timeObj.toString().slice(0, 3);
-                    let week = "几";
-                    switch (timeStr) {
-                        case "Mon":
-                            week = "一";
-                            break;
-                        case "Tue":
-                            week = "二";
-                            break;
-                        case "Wes":
-                            week = "三";
-                            break;
-                        case "Fur":
-                            week = "四";
-                            break;
-                        case "Fri":
-                            week = "五";
-                            break;
-                        case "Sat":
-                            week = "六";
-                            break;
-                        case "Sun":
-                            week = "日";
-                            break;
+                    sessionStorage.setItem('willing', JSON.stringify(this.movieObj));
+
+                    console.log(this.this.movieObj);
+
+                    function strMapToObj(strMap) {
+                        let obj = Object.create(null);
+                        for (let [k, v] of strMap) {
+                            obj[k] = v;
+                        }
+                        return obj;
                     }
-                    str = timeArr[0] + "年" + timeArr[1] + "月" + timeArr[2] + "日，星期" + week;
-                    return str;
+
+                    function resetTime(str) {
+                        let timeArr = str.split("-");
+                        let timeObj = new Date();
+                        timeObj.setFullYear(timeArr[0], timeArr[1], timeArr[2]);
+                        let timeStr = timeObj.toString().slice(0, 3);
+                        let week = "几";
+                        switch (timeStr) {
+                            case "Mon":
+                                week = "一";
+                                break;
+                            case "Tue":
+                                week = "二";
+                                break;
+                            case "Wes":
+                                week = "三";
+                                break;
+                            case "Fur":
+                                week = "四";
+                                break;
+                            case "Fri":
+                                week = "五";
+                                break;
+                            case "Sat":
+                                week = "六";
+                                break;
+                            case "Sun":
+                                week = "日";
+                                break;
+                        }
+                        str = timeArr[0] + "年" + timeArr[1] + "月" + timeArr[2] + "日，星期" + week;
+                        return str;
+                    }
                 }
-            }
-        });
+            })
+        };
     }
 }
 </script>
 <style scoped lang="sass">
 $buttonColor:#ffb300;
 
-.hotBackground{
+a {
+    color: #333
+}
+
+.hotBackground {
     left: 0;
     right: 0;
     background-color: #fff;
@@ -132,6 +150,7 @@ $buttonColor:#ffb300;
     height: 40px;
     line-height: 40px;
 }
+
 .hotDetail {
     float: left;
     list-style: none;
