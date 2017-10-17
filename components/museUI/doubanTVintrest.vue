@@ -1,10 +1,10 @@
 <template>
     <div class="demo-infinite-container anr">
         <mu-list>
-            <a :href="'#/detail/'+item.id" v-for="(item,index) in lists">
-                <template>
-                    <!--  <mu-list-item/> -->
-                    <!-- <div>{{i}}</div> -->
+            <template v-for="(item,index) in lists">
+                <!--  <mu-list-item/> -->
+                <!-- <div>{{i}}</div> -->
+                <a :href="'#/detail/'+item.id">
                     <div class='tenter'>
                         <!--  <div class='NO left' ><b><i>{{index+1}}</i></b></div> -->
                         <img :src="item.images.small" alt="" class='IMG left'>
@@ -18,9 +18,9 @@
                             <div class='count left'>{{item.collect_count}}人评价</div>
                         </div>
                     </div>
-                    <mu-divider/>
-                </template>
-            </a>
+                </a>
+                <mu-divider/>
+            </template>
         </mu-list>
         <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" />
     </div>
@@ -80,9 +80,10 @@ export default {
 }
 </script>
 <style lang="css" scoped>
-a{
-  color: #333;
+a {
+    color: #000;
 }
+
 .tenter {
     padding: 15px 5px;
 }
@@ -113,6 +114,8 @@ a{
     border: 1px solid #d9d9d9;
     padding-bottom: 100px !important;
 }
+
+
 
 .anr {
     height: auto !important;

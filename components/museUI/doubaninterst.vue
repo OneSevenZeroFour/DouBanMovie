@@ -1,28 +1,32 @@
 <template>
-    <div class="demo-infinite-container anr">
-        <mu-list>
-            <a :href="'#/detail/'+item.id" v-for="(item,index) in lists">
-                <template>
-                    <!--  <mu-list-item/> -->
-                    <!-- <div>{{i}}</div> -->
-                    <div class='tenter'>
-                        <!--  <div class='NO left' ><b><i>{{index+1}}</i></b></div> -->
-                        <img :src="item.images.small" alt="" class='IMG left'>
-                        <div class='left details'>
-                            <div class='name'>{{item.title?item.title:"123"}}</div>
-                            <div class='year'>{{item.year}}/{{item.casts[0]?item.casts[0].name_en:"未知"}}/{{item.genres[0]}}/{{item.genres[1]}}</div>
-                            <div class='time'>时长：{{item.durations[0]}}</div>
-                            <div class='stars left'></div>
-                            <div class='pingfeng left'>{{item.rating.average}}</div>
-                            <div class='count left'>{{item.collect_count}}人评价</div>
-                        </div>
-                    </div>
-                    <mu-divider/>
-                </template>
-            </a>
-        </mu-list>
-        <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" />
-    </div>
+<div class="demo-infinite-container anr">
+  <mu-list>
+    <template v-for="(item,index) in lists">
+     <!--  <mu-list-item/> -->
+        <!-- <div>{{i}}</div> -->
+        <a :href="'#/detail/'+item.id">
+          <div class='tenter'>
+         <!--  <div class='NO left' ><b><i>{{index+1}}</i></b></div> -->
+          <img :src="item.images.small" alt="" class='IMG left'>
+          <div class='left details'>
+            <div class='name'>{{item.title?item.title:"123"}}</div>
+            <div class='year'>{{item.year}}/{{item.casts[0]?item.casts[0].name_en:"未知"}}/{{item.genres[0]}}/{{item.genres[1]}}</div>
+            <div class='time'>时长：{{item.durations[0]}}</div>
+            <div class='stars left'></div>
+            <div class='pingfeng left'>{{item.rating.average}}</div>
+            <div class='count left'>{{item.collect_count}}人评价</div>
+
+          </div>
+        
+        </div>
+        </a>
+        
+        
+      <mu-divider/>
+    </template>
+  </mu-list>
+  <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
+</div>
 </template>
 <script>
 import $ from "jquery";
@@ -79,19 +83,10 @@ export default {
 }
 </script>
 <style lang="css" scoped>
-a{
-  color:#333;
-}
-.tenter {
-    padding: 15px 5px;
-}
+a{color:#000;}
 
-.stars {
-    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;
-    height: 8px;
-    width: 47px;
-    margin-top: 4px;
-}
+.tenter{padding:15px 5px;}
+.stars{background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;height:8px;width:47px;margin-top:4px;}
 
 .NO {
     margin: 5px 10px 0 5px;

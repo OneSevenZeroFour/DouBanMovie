@@ -3,10 +3,11 @@
 
   <h3> <span @click="$router.go(-1)">&lt;</span>今日推荐</h3>
   <mu-grid-list class="gridlist-demo">
-    <mu-grid-tile   v-for="tile ,index in lists"  :key="index" class='todays' >
+  <a   v-for="tile ,index in lists"  :key="index"   :href="'#/detail/'+tile.id">
+    <mu-grid-tile  class='todays'>
       <img  :src="tile.images.large"/>
       <span slot="title">{{tile.title}}</span>
-    </mu-grid-tile>
+    </mu-grid-tile></a>
   </mu-grid-list>
 </div>
 </template>
@@ -36,7 +37,9 @@ export default {
 </script>
 
 <style scoped>
-
+a{width: 50%;
+    padding: 2px;
+    height: 180px;}
 h3{width:100%;background-color:#FFF;margin:0;text-align:center;color:#000;marginheight:60px;line-height:60px;}
 h3 span{float:left;color:#000;font-size: 30px;margin-left: 10px;font-weight:300;}
 .gridlist-demo-container{
@@ -51,6 +54,7 @@ h3 span{float:left;color:#000;font-size: 30px;margin-left: 10px;font-weight:300;
   height: 80% !important;
   overflow-y: auto;
 }
+.todays{width:100% !important;}
 .mu-grid-tile-subtitle, .mu-grid-tile-title {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -58,4 +62,6 @@ h3 span{float:left;color:#000;font-size: 30px;margin-left: 10px;font-weight:300;
     word-wrap: break-word;
    text-align: center !important;
 }
+.mu-grid-tile-title span{width:100%;display:block;text-align: center;}
+
 </style>

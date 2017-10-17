@@ -35726,8 +35726,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -35744,7 +35742,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             dataType: "jsonp",
             success: function (data) {
-
+                console.log(data.subjects);
                 self.lists = data.subjects;
             }
         });
@@ -35766,7 +35764,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.lists), function(tile, index) {
     return _c('mu-grid-tile', {
       key: index,
-      staticClass: "todays"
+      staticClass: "todays",
+      attrs: {
+        "href": '#/detail/' + tile.id
+      }
     }, [_c('a', {
       attrs: {
         "href": '#/detail/' + tile.id
@@ -35867,7 +35868,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\na[data-v-9501f6e4]{\r\n  color: #333;\n}\n.tenter[data-v-9501f6e4] {\r\n    padding: 5px;\n}\n.stars[data-v-9501f6e4] {\r\n    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;\r\n    height: 8px;\r\n    width: 47px;\r\n    margin-top: 4px;\n}\n.NO[data-v-9501f6e4] {\r\n    margin: 5px 10px 0 5px;\n}\n.left[data-v-9501f6e4] {\r\n    float: left;\n}\n.tenter[data-v-9501f6e4] {\r\n    width: 100%;\r\n    overflow: hidden;\n}\n.demo-infinite-container[data-v-9501f6e4] {\r\n    height: 1113px !important;\r\n    /*overflow: auto;*/\r\n    -webkit-overflow-scrolling: touch;\r\n    border: none !important;\n}\n.pingfeng[data-v-9501f6e4] {\r\n    margin-right: 5px;\n}\n.details[data-v-9501f6e4] {\r\n    margin-left: 30px;\r\n    margin-top: 30px;\n}\n.pingfeng[data-v-9501f6e4],\r\n.count[data-v-9501f6e4] {\r\n    color: #ddd;\r\n    font-size: 9px;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-9501f6e4] {\r\n    color: #000;\n}\n.tenter[data-v-9501f6e4] {\r\n    padding: 5px;\n}\n.stars[data-v-9501f6e4] {\r\n    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;\r\n    height: 8px;\r\n    width: 47px;\r\n    margin-top: 4px;\n}\n.NO[data-v-9501f6e4] {\r\n    margin: 5px 10px 0 5px;\n}\n.left[data-v-9501f6e4] {\r\n    float: left;\n}\n.tenter[data-v-9501f6e4] {\r\n    width: 100%;\r\n    overflow: hidden;\n}\n.demo-infinite-container[data-v-9501f6e4] {\r\n    height: 1113px !important;\r\n    /*overflow: auto;*/\r\n    -webkit-overflow-scrolling: touch;\r\n    border: none !important;\n}\n.stars[data-v-9501f6e4] {\r\n    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;\r\n    height: 8px;\r\n    width: 47px;\r\n    margin-top: 4px;\n}\n.NO[data-v-9501f6e4] {\r\n    margin: 5px 10px 0 5px;\n}\n.left[data-v-9501f6e4] {\r\n    float: left;\n}\n.tenter[data-v-9501f6e4] {\r\n    width: 100%;\r\n    overflow: hidden;\n}\n.demo-infinite-container[data-v-9501f6e4] {\r\n    height: 1113px !important;\r\n    /*overflow: auto;*/\r\n    -webkit-overflow-scrolling: touch;\r\n    border: none !important;\n}\n.pingfeng[data-v-9501f6e4] {\r\n    margin-right: 5px;\n}\n.details[data-v-9501f6e4] {\r\n    margin-left: 30px;\r\n    margin-top: 30px;\n}\n.pingfeng[data-v-9501f6e4],\r\n.count[data-v-9501f6e4] {\r\n    color: #ddd;\r\n    font-size: 9px;\n}\r\n", ""]);
 
 // exports
 
@@ -35960,35 +35961,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "demo-infinite-container"
-  }, [_c('mu-list', _vm._l((_vm.lists), function(item, index) {
-    return _c('a', {
+  }, [_c('mu-list', [_vm._l((_vm.lists), function(item, index) {
+    return [_c('a', {
       attrs: {
         "href": '#/detail/' + item.id
       }
-    }, [
-      [_c('div', {
-        staticClass: "tenter"
-      }, [_c('div', {
-        staticClass: "NO left"
-      }, [_c('b', [_c('i', [_vm._v(_vm._s(index + 1))])])]), _vm._v(" "), _c('img', {
-        staticClass: "IMG left",
-        attrs: {
-          "src": item.images.small,
-          "alt": ""
-        }
-      }), _vm._v(" "), _c('div', {
-        staticClass: "left details"
-      }, [_c('div', {
-        staticClass: "name"
-      }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('div', {
-        staticClass: "stars left"
-      }), _vm._v(" "), _c('div', {
-        staticClass: "pingfeng left"
-      }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
-        staticClass: "count left"
-      }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])]), _vm._v(" "), _c('mu-divider')]
-    ], 2)
-  }))], 1)
+    }, [_c('div', {
+      staticClass: "tenter"
+    }, [_c('div', {
+      staticClass: "NO left"
+    }, [_c('b', [_c('i', [_vm._v(_vm._s(index + 1))])])]), _vm._v(" "), _c('img', {
+      staticClass: "IMG left",
+      attrs: {
+        "src": item.images.small,
+        "alt": ""
+      }
+    }), _vm._v(" "), _c('div', {
+      staticClass: "left details"
+    }, [_c('div', {
+      staticClass: "name"
+    }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('div', {
+      staticClass: "stars left"
+    }), _vm._v(" "), _c('div', {
+      staticClass: "pingfeng left"
+    }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
+      staticClass: "count left"
+    }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])])]), _vm._v(" "), _c('mu-divider')]
+  })], 2)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -36071,7 +36070,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\na[data-v-4c5413a0]{\r\n  color:#333;\n}\n.tenter[data-v-4c5413a0] {\r\n    padding: 15px 5px;\n}\n.stars[data-v-4c5413a0] {\r\n    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;\r\n    height: 8px;\r\n    width: 47px;\r\n    margin-top: 4px;\n}\n.NO[data-v-4c5413a0] {\r\n    margin: 5px 10px 0 5px;\n}\n.left[data-v-4c5413a0] {\r\n    float: left;\n}\n.tenter[data-v-4c5413a0] {\r\n    width: 100%;\r\n    overflow: hidden;\n}\n.demo-infinite-container[data-v-4c5413a0] {\r\n    /*overflow: auto;*/\r\n    -webkit-overflow-scrolling: touch;\r\n    border: 1px solid #d9d9d9;\r\n    padding-bottom: 100px !important;\n}\n.anr[data-v-4c5413a0] {\r\n    height: auto !important;\n}\n.pingfeng[data-v-4c5413a0] {\r\n    margin-right: 5px;\n}\n.details[data-v-4c5413a0] {\r\n    margin-left: 30px;\r\n    margin-top: 10px;\n}\n.pingfeng[data-v-4c5413a0],\r\n.count[data-v-4c5413a0] {\r\n    color: #ddd !important;\r\n    font-size: 9px !important;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-4c5413a0]{color:#000;\n}\n.tenter[data-v-4c5413a0]{padding:15px 5px;\n}\n.stars[data-v-4c5413a0]{background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;height:8px;width:47px;margin-top:4px;\n}\n.NO[data-v-4c5413a0] {\r\n    margin: 5px 10px 0 5px;\n}\n.left[data-v-4c5413a0] {\r\n    float: left;\n}\n.tenter[data-v-4c5413a0] {\r\n    width: 100%;\r\n    overflow: hidden;\n}\n.demo-infinite-container[data-v-4c5413a0] {\r\n    /*overflow: auto;*/\r\n    -webkit-overflow-scrolling: touch;\r\n    border: 1px solid #d9d9d9;\r\n    padding-bottom: 100px !important;\n}\n.anr[data-v-4c5413a0] {\r\n    height: auto !important;\n}\n.pingfeng[data-v-4c5413a0] {\r\n    margin-right: 5px;\n}\n.details[data-v-4c5413a0] {\r\n    margin-left: 30px;\r\n    margin-top: 10px;\n}\n.pingfeng[data-v-4c5413a0],\r\n.count[data-v-4c5413a0] {\r\n    color: #ddd !important;\r\n    font-size: 9px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -36084,6 +36083,10 @@ exports.push([module.i, "\na[data-v-4c5413a0]{\r\n  color:#333;\n}\n.tenter[data
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+//
+//
+//
+//
 //
 //
 //
@@ -36169,37 +36172,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "demo-infinite-container anr"
-  }, [_c('mu-list', _vm._l((_vm.lists), function(item, index) {
-    return _c('a', {
+  }, [_c('mu-list', [_vm._l((_vm.lists), function(item, index) {
+    return [_c('a', {
       attrs: {
         "href": '#/detail/' + item.id
       }
-    }, [
-      [_c('div', {
-        staticClass: "tenter"
-      }, [_c('img', {
-        staticClass: "IMG left",
-        attrs: {
-          "src": item.images.small,
-          "alt": ""
-        }
-      }), _vm._v(" "), _c('div', {
-        staticClass: "left details"
-      }, [_c('div', {
-        staticClass: "name"
-      }, [_vm._v(_vm._s(item.title ? item.title : "123"))]), _vm._v(" "), _c('div', {
-        staticClass: "year"
-      }, [_vm._v(_vm._s(item.year) + "/" + _vm._s(item.casts[0] ? item.casts[0].name_en : "未知") + "/" + _vm._s(item.genres[0]) + "/" + _vm._s(item.genres[1]))]), _vm._v(" "), _c('div', {
-        staticClass: "time"
-      }, [_vm._v("时长：" + _vm._s(item.durations[0]))]), _vm._v(" "), _c('div', {
-        staticClass: "stars left"
-      }), _vm._v(" "), _c('div', {
-        staticClass: "pingfeng left"
-      }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
-        staticClass: "count left"
-      }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])]), _vm._v(" "), _c('mu-divider')]
-    ], 2)
-  })), _vm._v(" "), _c('mu-infinite-scroll', {
+    }, [_c('div', {
+      staticClass: "tenter"
+    }, [_c('img', {
+      staticClass: "IMG left",
+      attrs: {
+        "src": item.images.small,
+        "alt": ""
+      }
+    }), _vm._v(" "), _c('div', {
+      staticClass: "left details"
+    }, [_c('div', {
+      staticClass: "name"
+    }, [_vm._v(_vm._s(item.title ? item.title : "123"))]), _vm._v(" "), _c('div', {
+      staticClass: "year"
+    }, [_vm._v(_vm._s(item.year) + "/" + _vm._s(item.casts[0] ? item.casts[0].name_en : "未知") + "/" + _vm._s(item.genres[0]) + "/" + _vm._s(item.genres[1]))]), _vm._v(" "), _c('div', {
+      staticClass: "time"
+    }, [_vm._v("时长：" + _vm._s(item.durations[0]))]), _vm._v(" "), _c('div', {
+      staticClass: "stars left"
+    }), _vm._v(" "), _c('div', {
+      staticClass: "pingfeng left"
+    }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
+      staticClass: "count left"
+    }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])])]), _vm._v(" "), _c('mu-divider')]
+  })], 2), _vm._v(" "), _c('mu-infinite-scroll', {
     attrs: {
       "scroller": _vm.scroller,
       "loading": _vm.loading
@@ -36357,6 +36358,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('mu-grid-tile', {
       key: index,
       staticClass: "todays"
+    }, [_c('a', {
+      attrs: {
+        "href": '#/detail/' + tile.id
+      }
     }, [_c('img', {
       attrs: {
         "src": tile.images.large
@@ -36364,7 +36369,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "touchmove": _vm.ok
       }
-    }), _vm._v(" "), _c('span', {
+    })]), _vm._v(" "), _c('span', {
       attrs: {
         "slot": "title"
       },
@@ -36453,7 +36458,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\na[data-v-7f903e98]{\r\n  color: #333;\n}\n.tenter[data-v-7f903e98] {\r\n    padding: 15px 5px;\n}\n.stars[data-v-7f903e98] {\r\n    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;\r\n    height: 8px;\r\n    width: 47px;\r\n    margin-top: 4px;\n}\n.NO[data-v-7f903e98] {\r\n    margin: 5px 10px 0 5px;\n}\n.left[data-v-7f903e98] {\r\n    float: left;\n}\n.tenter[data-v-7f903e98] {\r\n    width: 100%;\r\n    overflow: hidden;\n}\n.demo-infinite-container[data-v-7f903e98] {\r\n    /*overflow: auto;*/\r\n    -webkit-overflow-scrolling: touch;\r\n    border: 1px solid #d9d9d9;\r\n    padding-bottom: 100px !important;\n}\n.anr[data-v-7f903e98] {\r\n    height: auto !important;\n}\n.pingfeng[data-v-7f903e98] {\r\n    margin-right: 5px;\n}\n.details[data-v-7f903e98] {\r\n    margin-left: 30px;\r\n    margin-top: 10px;\n}\n.pingfeng[data-v-7f903e98],\r\n.count[data-v-7f903e98] {\r\n    color: #ddd !important;\r\n    font-size: 9px !important;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-7f903e98] {\r\n    color: #000;\n}\n.tenter[data-v-7f903e98] {\r\n    padding: 15px 5px;\n}\n.stars[data-v-7f903e98] {\r\n    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 2x) no-repeat;\r\n    height: 8px;\r\n    width: 47px;\r\n    margin-top: 4px;\n}\n.NO[data-v-7f903e98] {\r\n    margin: 5px 10px 0 5px;\n}\n.left[data-v-7f903e98] {\r\n    float: left;\n}\n.tenter[data-v-7f903e98] {\r\n    width: 100%;\r\n    overflow: hidden;\n}\n.demo-infinite-container[data-v-7f903e98] {\r\n    /*overflow: auto;*/\r\n    -webkit-overflow-scrolling: touch;\r\n    border: 1px solid #d9d9d9;\r\n    padding-bottom: 100px !important;\n}\n.anr[data-v-7f903e98] {\r\n    height: auto !important;\n}\n.pingfeng[data-v-7f903e98] {\r\n    margin-right: 5px;\n}\n.details[data-v-7f903e98] {\r\n    margin-left: 30px;\r\n    margin-top: 10px;\n}\n.pingfeng[data-v-7f903e98],\r\n.count[data-v-7f903e98] {\r\n    color: #ddd !important;\r\n    font-size: 9px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -36552,35 +36557,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "demo-infinite-container anr"
-  }, [_c('mu-list', _vm._l((_vm.lists), function(item, index) {
-    return _c('a', {
+  }, [_c('mu-list', [_vm._l((_vm.lists), function(item, index) {
+    return [_c('a', {
       attrs: {
         "href": '#/detail/' + item.id
       }
-    }, [
-      [_c('div', {
-        staticClass: "tenter"
-      }, [_c('img', {
-        staticClass: "IMG left",
-        attrs: {
-          "src": item.images.small,
-          "alt": ""
-        }
-      }), _vm._v(" "), _c('div', {
-        staticClass: "left details"
-      }, [_c('div', {
-        staticClass: "name"
-      }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('div', [_vm._v("主演：" + _vm._s(item.casts[0] ? item.casts[0].name_en : "未知"))]), _vm._v(" "), _c('div', {
-        staticClass: "year"
-      }, [_vm._v("类型：" + _vm._s(item.genres[0]) + "/" + _vm._s(item.genres[1]))]), _vm._v(" "), _c('div', {
-        staticClass: "stars left"
-      }), _vm._v(" "), _c('div', {
-        staticClass: "pingfeng left"
-      }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
-        staticClass: "count left"
-      }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])]), _vm._v(" "), _c('mu-divider')]
-    ], 2)
-  })), _vm._v(" "), _c('mu-infinite-scroll', {
+    }, [_c('div', {
+      staticClass: "tenter"
+    }, [_c('img', {
+      staticClass: "IMG left",
+      attrs: {
+        "src": item.images.small,
+        "alt": ""
+      }
+    }), _vm._v(" "), _c('div', {
+      staticClass: "left details"
+    }, [_c('div', {
+      staticClass: "name"
+    }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('div', [_vm._v("主演：" + _vm._s(item.casts[0] ? item.casts[0].name_en : "未知"))]), _vm._v(" "), _c('div', {
+      staticClass: "year"
+    }, [_vm._v("类型：" + _vm._s(item.genres[0]) + "/" + _vm._s(item.genres[1]))]), _vm._v(" "), _c('div', {
+      staticClass: "stars left"
+    }), _vm._v(" "), _c('div', {
+      staticClass: "pingfeng left"
+    }, [_vm._v(_vm._s(item.rating.average))]), _vm._v(" "), _c('div', {
+      staticClass: "count left"
+    }, [_vm._v(_vm._s(item.collect_count) + "人评价")])])])]), _vm._v(" "), _c('mu-divider')]
+  })], 2), _vm._v(" "), _c('mu-infinite-scroll', {
     attrs: {
       "scroller": _vm.scroller,
       "loading": _vm.loading
@@ -36951,7 +36954,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\nh3[data-v-746773b9]{width:100%;background-color:#FFF;margin:0;text-align:center;color:#000;marginheight:60px;line-height:60px;\n}\nh3 span[data-v-746773b9]{float:left;color:#000;font-size: 30px;margin-left: 10px;font-weight:300;\n}\n.gridlist-demo-container[data-v-746773b9]{\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-around;\r\n  margin-bottom: 111px;\n}\n.gridlist-demo[data-v-746773b9]{\r\n  width: 500px;\r\n  height: 80% !important;\r\n  overflow-y: auto;\n}\n.mu-grid-tile-subtitle[data-v-746773b9], .mu-grid-tile-title[data-v-746773b9] {\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    word-wrap: break-word;\r\n   text-align: center !important;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-746773b9]{width: 50%;\r\n    padding: 2px;\r\n    height: 180px;\n}\nh3[data-v-746773b9]{width:100%;background-color:#FFF;margin:0;text-align:center;color:#000;marginheight:60px;line-height:60px;\n}\nh3 span[data-v-746773b9]{float:left;color:#000;font-size: 30px;margin-left: 10px;font-weight:300;\n}\n.gridlist-demo-container[data-v-746773b9]{\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-around;\r\n  margin-bottom: 111px;\n}\n.gridlist-demo[data-v-746773b9]{\r\n  width: 500px;\r\n  height: 80% !important;\r\n  overflow-y: auto;\n}\n.todays[data-v-746773b9]{width:100% !important;\n}\n.mu-grid-tile-subtitle[data-v-746773b9], .mu-grid-tile-title[data-v-746773b9] {\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    word-wrap: break-word;\r\n   text-align: center !important;\n}\n.mu-grid-tile-title span[data-v-746773b9]{width:100%;display:block;text-align: center;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -36964,6 +36967,7 @@ exports.push([module.i, "\nh3[data-v-746773b9]{width:100%;background-color:#FFF;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+//
 //
 //
 //
@@ -37016,8 +37020,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("<")]), _vm._v("今日推荐")]), _vm._v(" "), _c('mu-grid-list', {
     staticClass: "gridlist-demo"
   }, _vm._l((_vm.lists), function(tile, index) {
-    return _c('mu-grid-tile', {
+    return _c('a', {
       key: index,
+      attrs: {
+        "href": '#/detail/' + tile.id
+      }
+    }, [_c('mu-grid-tile', {
       staticClass: "todays"
     }, [_c('img', {
       attrs: {
@@ -37028,7 +37036,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "slot": "title"
       },
       slot: "title"
-    }, [_vm._v(_vm._s(tile.title))])])
+    }, [_vm._v(_vm._s(tile.title))])])], 1)
   }))], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -37112,7 +37120,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\nh3[data-v-4e63c4a8]{width:100%;background-color:#FFF;margin:0;text-align:center;color:#000;marginheight:60px;line-height:60px;\n}\nh3 span[data-v-4e63c4a8]{float:left;color:#000;font-size: 30px;margin-left: 10px;font-weight:300;\n}\n.gridlist-demo-container[data-v-4e63c4a8]{\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-around;\r\n  margin-bottom: 111px;\n}\n.gridlist-demo[data-v-4e63c4a8]{\r\n  width: 500px;\r\n  height: 80% !important;\r\n  overflow-y: auto;\n}\n.mu-grid-tile-subtitle[data-v-4e63c4a8], .mu-grid-tile-title[data-v-4e63c4a8] {\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    word-wrap: break-word;\r\n   text-align: center !important;\n}\r\n", ""]);
+exports.push([module.i, "\na[data-v-4e63c4a8]{width: 50%;\r\n    padding: 2px;\r\n    height: 180px;\n}\nh3[data-v-4e63c4a8]{width:100%;background-color:#FFF;margin:0;text-align:center;color:#000;marginheight:60px;line-height:60px;\n}\nh3 span[data-v-4e63c4a8]{float:left;color:#000;font-size: 30px;margin-left: 10px;font-weight:300;\n}\n.gridlist-demo-container[data-v-4e63c4a8]{\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-around;\r\n  margin-bottom: 111px;\n}\n.gridlist-demo[data-v-4e63c4a8]{\r\n  width: 500px;\r\n  height: 80% !important;\r\n  overflow-y: auto;\n}\n.todays[data-v-4e63c4a8]{width:100% !important;\n}\n.mu-grid-tile-subtitle[data-v-4e63c4a8], .mu-grid-tile-title[data-v-4e63c4a8] {\r\n    text-overflow: ellipsis;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    word-wrap: break-word;\r\n   text-align: center !important;\n}\n.mu-grid-tile-title span[data-v-4e63c4a8]{width:100%;display:block;text-align: center;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -37125,6 +37133,7 @@ exports.push([module.i, "\nh3[data-v-4e63c4a8]{width:100%;background-color:#FFF;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+//
 //
 //
 //
@@ -37176,11 +37185,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.$router.go(-1)
       }
     }
-  }, [_vm._v("<")]), _vm._v("近期热门电视剧")]), _vm._v(" "), _c('mu-grid-list', {
+  }, [_vm._v("<")]), _vm._v("今日推荐")]), _vm._v(" "), _c('mu-grid-list', {
     staticClass: "gridlist-demo"
   }, _vm._l((_vm.lists), function(tile, index) {
-    return _c('mu-grid-tile', {
+    return _c('a', {
       key: index,
+      attrs: {
+        "href": '#/detail/' + tile.id
+      }
+    }, [_c('mu-grid-tile', {
       staticClass: "todays"
     }, [_c('img', {
       attrs: {
@@ -37191,7 +37204,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "slot": "title"
       },
       slot: "title"
-    }, [_vm._v(_vm._s(tile.title))])])
+    }, [_vm._v(_vm._s(tile.title))])])], 1)
   }))], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -37485,7 +37498,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\nsection p {\r\n    font-size: 15px;\r\n    color: #494949;\n}\nsubject-mark #mark-item a {\r\n    height: 30px;\r\n    line-height: 30px;\r\n    display: block;\r\n    border: 1px solid #ffb712;\r\n    border-radius: 3px;\r\n    margin-right: 10px;\r\n    color: #ffb712;\r\n    font-size: 15px;\r\n    text-align: center;\r\n    -webkit-box-flex: 1;\r\n    -moz-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex: 1;\r\n    -moz-flex: 1;\r\n    -ms-flex: 1;\r\n    flex: 1;\n}\n.photo-list {\r\n    position: relative;\r\n    height: 120px;\r\n    margin-left: -18px;\n}\n.photo-list ul {\r\n    word-break: keep-all;\r\n    white-space: nowrap;\r\n    overflow: scroll;\r\n    -webkit-overflow-scrolling: touch;\r\n    width: auto;\r\n    position: absolute;\r\n    left: 0;\r\n    right: -18px;\n}\n.photo-list ul li {\r\n    margin: 0;\r\n    height: 120px;\r\n    overflow: hidden;\r\n    display: inline-block;\n}\n.photo-list ul li img {\r\n    height: 100%;\r\n    display: block;\n}\n.photo-list ul .video {\r\n    width: 213.33333px;\r\n    overflow: hidden;\r\n    background-size: 100%;\n}\n.subject-rec .bd {\r\n    position: relative;\r\n    height: 160px;\r\n    margin-left: -18px;\n}\n.subject-rec ul {\r\n    word-break: keep-all;\r\n    white-space: nowrap;\r\n    overflow: scroll;\r\n    -webkit-overflow-scrolling: touch;\r\n    width: auto;\r\n    position: absolute;\r\n    left: 0;\r\n    right: -18px;\n}\n.subject-rec ul li:first-child {\r\n    margin-left: 18px;\n}\n.subject-rec ul li {\r\n    width: 80px;\r\n    overflow: hidden;\r\n    background: #fff;\r\n    display: inline-block;\r\n    margin: 0 8px 8px 0;\r\n    vertical-align: top;\n}\n.subject-rec img {\r\n    width: 100%;\r\n    height: 112px;\n}\n.subject-rec h3 {\r\n    font-size: 15px;\r\n    line-height: 18pt;\r\n    white-space: normal;\r\n    display: -webkit-box;\r\n    overflow: hidden;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-line-clamp: 2;\r\n    text-align: center;\r\n    color: #494949;\r\n    margin-top: 8px;\n}\nsection h3 {\r\n    line-height: 22px;\r\n    word-wrap: break-word;\r\n    margin: 0;\r\n    padding: 0;\n}\n.list li:first-child {\r\n    padding-top: 0;\n}\n.list li {\r\n    position: relative;\r\n    padding: 15px 18px 15px 0;\r\n    word-wrap: break-word;\r\n    overflow: hidden;\n}\n.list li:first-child {\r\n    padding-top: 0;\n}\n.comment-list li .desc {\r\n    font-size: 0;\r\n    line-height: normal;\r\n    margin: 0 0 11px;\r\n    color: #494949;\r\n    position: relative;\n}\n.list li .desc>a {\r\n    display: inline;\n}\n.list a {\r\n    display: block;\r\n    overflow: hidden;\r\n    text-decoration: none;\r\n    color: #494949;\n}\n.comment-list li .desc img, .comment-list li .desc .avatar {\r\n    width: 36px;\r\n    border-radius: 50%;\r\n    vertical-align: text-top;\r\n    margin-right: 10px;\r\n    float: left;\n}\n.comment-list li .desc .user-info {\r\n    margin-left: 40px;\n}\n.comment-list li .desc strong {\r\n    font-size: 15px;\r\n    display: inline-block;\r\n    vertical-align: text-top;\r\n    margin-right: 6px;\n}\n.comment-list li .desc .date {\r\n    margin-top: 6px;\r\n    font-size: 12px;\r\n    color: #aaa;\n}\n.comment-list li p {\r\n    padding: 0 0 0 40px;\r\n    line-height: 22px;\r\n    color: #494949;\n}\n.detail-enter-active, .detail-leave-active{\r\n\ttransition: all 0.3s;\n}\n.detail-enter, .detail-leave-to{\r\n    transform: translate3d(100%, 0, 0)\n}\r\n", ""]);
+exports.push([module.i, "\n.card{\r\n    padding: 0 20px;\n}\nsection p {\r\n    font-size: 15px;\r\n    color: #494949;\n}\nsubject-mark #mark-item a {\r\n    height: 30px;\r\n    line-height: 30px;\r\n    display: block;\r\n    border: 1px solid #ffb712;\r\n    border-radius: 3px;\r\n    margin-right: 10px;\r\n    color: #ffb712;\r\n    font-size: 15px;\r\n    text-align: center;\r\n    -webkit-box-flex: 1;\r\n    -moz-box-flex: 1;\r\n    box-flex: 1;\r\n    -webkit-flex: 1;\r\n    -moz-flex: 1;\r\n    -ms-flex: 1;\r\n    flex: 1;\n}\n.photo-list {\r\n    position: relative;\r\n    height: 120px;\r\n    margin-left: -18px;\n}\n.photo-list ul {\r\n    word-break: keep-all;\r\n    white-space: nowrap;\r\n    overflow: scroll;\r\n    -webkit-overflow-scrolling: touch;\r\n    width: auto;\r\n    position: absolute;\r\n    left: 0;\r\n    right: -18px;\n}\n.photo-list ul li {\r\n    margin: 0;\r\n    height: 120px;\r\n    overflow: hidden;\r\n    display: inline-block;\n}\n.photo-list ul li img {\r\n    height: 100%;\r\n    display: block;\n}\n.photo-list ul .video {\r\n    width: 213.33333px;\r\n    overflow: hidden;\r\n    background-size: 100%;\n}\n.subject-rec .bd {\r\n    position: relative;\r\n    height: 160px;\r\n    margin-left: -18px;\n}\n.subject-rec ul {\r\n    word-break: keep-all;\r\n    white-space: nowrap;\r\n    overflow: scroll;\r\n    -webkit-overflow-scrolling: touch;\r\n    width: auto;\r\n    position: absolute;\r\n    left: 0;\r\n    right: -18px;\n}\n.subject-rec ul li:first-child {\r\n    margin-left: 18px;\n}\n.subject-rec ul li {\r\n    width: 80px;\r\n    overflow: hidden;\r\n    background: #fff;\r\n    display: inline-block;\r\n    margin: 0 8px 8px 0;\r\n    vertical-align: top;\n}\n.subject-rec img {\r\n    width: 100%;\r\n    height: 112px;\n}\n.subject-rec h3 {\r\n    font-size: 15px;\r\n    line-height: 18pt;\r\n    white-space: normal;\r\n    display: -webkit-box;\r\n    overflow: hidden;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-line-clamp: 2;\r\n    text-align: center;\r\n    color: #494949;\r\n    margin-top: 8px;\n}\nsection h3 {\r\n    line-height: 22px;\r\n    word-wrap: break-word;\r\n    margin: 0;\r\n    padding: 0;\n}\n.list li:first-child {\r\n    padding-top: 0;\n}\n.list li {\r\n    position: relative;\r\n    padding: 15px 18px 15px 0;\r\n    word-wrap: break-word;\r\n    overflow: hidden;\n}\n.list li:first-child {\r\n    padding-top: 0;\n}\n.comment-list li .desc {\r\n    font-size: 0;\r\n    line-height: normal;\r\n    margin: 0 0 11px;\r\n    color: #494949;\r\n    position: relative;\n}\n.list li .desc>a {\r\n    display: inline;\n}\n.list a {\r\n    display: block;\r\n    overflow: hidden;\r\n    text-decoration: none;\r\n    color: #494949;\n}\n.comment-list li .desc img,\r\n.comment-list li .desc .avatar {\r\n    width: 36px;\r\n    border-radius: 50%;\r\n    vertical-align: text-top;\r\n    margin-right: 10px;\r\n    float: left;\n}\n.comment-list li .desc .user-info {\r\n    margin-left: 40px;\n}\n.comment-list li .desc strong {\r\n    font-size: 15px;\r\n    display: inline-block;\r\n    vertical-align: text-top;\r\n    margin-right: 6px;\n}\n.comment-list li .desc .date {\r\n    margin-top: 6px;\r\n    font-size: 12px;\r\n    color: #aaa;\n}\n.comment-list li p {\r\n    padding: 0 0 0 40px;\r\n    line-height: 22px;\r\n    color: #494949;\n}\n.detail-enter-active,\r\n.detail-leave-active {\r\n    transition: all 0.3s;\n}\n.detail-enter,\r\n.detail-leave-to {\r\n    transform: translate3d(100%, 0, 0)\n}\r\n", ""]);
 
 // exports
 
@@ -37508,9 +37521,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	components: {
-		dtitle: __WEBPACK_IMPORTED_MODULE_0__detailTitle_vue___default.a
-	}
+    components: {
+        dtitle: __WEBPACK_IMPORTED_MODULE_0__detailTitle_vue___default.a
+    }
 
 });
 

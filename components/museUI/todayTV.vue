@@ -2,7 +2,7 @@
 <div class="gridlist-demo-container">
   <mu-grid-list class="gridlist-demo">
     <mu-grid-tile   v-for="tile ,index in lists"  :key="index" class='todays' >
-      <img @touchmove="ok" :src="tile.images.large"/>
+      <a :href="'#/detail/'+tile.id"><img @touchmove="ok" :src="tile.images.large"/></a>
       <span slot="title">{{tile.title}}</span>
     </mu-grid-tile>
   </mu-grid-list>
