@@ -34592,7 +34592,7 @@ exports = module.exports = __webpack_require__(1)();
 
 
 // module
-exports.push([module.i, "\na[data-v-c39e161c] {\n  color: #333;\n}\n.hotDetail[data-v-c39e161c] {\n  float: left;\n  list-style: none;\n  margin: 0;\n  padding: 0 20px;\n  width: 57%;\n}\n.hotMovie[data-v-c39e161c] {\n  padding: 10px;\n  overflow: hidden;\n  border-bottom: 1px solid #eee;\n}\n.hotDetailButton[data-v-c39e161c] {\n  list-style: none;\n  float: right;\n  padding: 0;\n  width: 21%;\n  text-align: center;\n  vertical-align: middle;\n  margin: 25px 0 0;\n  color: #ff1744;\n}\n.text-style[data-v-c39e161c] {\n  font-size: 8px;\n  color: #888;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n}\n.button[data-v-c39e161c] {\n  width: 100%;\n  border: 1px solid #ff4081;\n  border-radius: 3px;\n}\n", ""]);
+exports.push([module.i, "\na[data-v-c39e161c] {\n  color: #333;\n}\n.hotDetail[data-v-c39e161c] {\n  float: left;\n  list-style: none;\n  margin: 0;\n  padding: 0 20px;\n  width: 54%;\n}\n.hotMovie[data-v-c39e161c] {\n  padding: 10px;\n  overflow: hidden;\n  border-bottom: 1px solid #eee;\n}\n.hotDetailButton[data-v-c39e161c] {\n  list-style: none;\n  float: right;\n  padding: 0;\n  width: 24%;\n  text-align: center;\n  vertical-align: middle;\n  margin: 25px 0 0;\n  color: #ff1744;\n}\n.text-style[data-v-c39e161c] {\n  font-size: 8px;\n  color: #888;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 1;\n  overflow: hidden;\n}\n.button[data-v-c39e161c] {\n  width: 100%;\n  border: 1px solid #ff4081;\n  border-radius: 3px;\n}\n", ""]);
 
 // exports
 
@@ -34670,6 +34670,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     sessionStorage.setItem('hotting', JSON.stringify(data.subjects));
                 }
             });
+        }
+    },
+    filters: {
+        number: function (value) {
+            if (value < 9999) return value;else {
+                return (value / 10000).toFixed(1) + "万";
+            }
         }
     }
 });
@@ -34813,7 +34820,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticStyle: {
         "font-size": "9px"
       }
-    }, [_vm._v(_vm._s(m.collect_count) + "人看过")]), _vm._v(" "), _vm._m(0, true)])])])
+    }, [_vm._v(_vm._s(_vm._f("number")(m.collect_count)) + "人看过")]), _vm._v(" "), _vm._m(0, true)])])])
   }))
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('div', {
@@ -34964,8 +34971,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         movieObjs() {
             return this.movieObj;
-        },
-        number() {}
+        }
     },
     mounted() {
         if (sessionStorage.getItem('willing')) {
@@ -34980,7 +34986,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     let movieArr = [];
                     let timeStr = "";
                     data.subjects.forEach((e, i) => {
-                        // console.log(e.mainland_pubdate);
                         if (timeStr === e.mainland_pubdate) {
                             movieArr.push(e);
                         } else {
@@ -34998,8 +35003,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.movieObj = strMapToObj(movieMap);
 
                     sessionStorage.setItem('willing', JSON.stringify(this.movieObj));
-
-                    console.log(this.this.movieObj);
 
                     function strMapToObj(strMap) {
                         let obj = Object.create(null);
@@ -35044,6 +35047,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         };
+    },
+    filters: {
+        number: function (value) {
+            if (value < 9999) return value;else {
+                return (value / 10000).toFixed(1) + "万";
+            }
+        }
     }
 });
 
@@ -35090,7 +35100,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         staticStyle: {
           "font-size": "9px"
         }
-      }, [_vm._v(_vm._s(value.collect_count) + "人想看")]), _vm._v(" "), _vm._m(1, true)])])])
+      }, [_vm._v(_vm._s(_vm._f("number")(value.collect_count)) + "人想看")]), _vm._v(" "), _vm._m(1, true)])])])
     })], 2)
   })], 2)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

@@ -34,7 +34,7 @@
                     </li>
                 </ul>
                 <ul class="hotDetailButton">
-                    <li style="font-size:9px">{{m.collect_count}}人看过</li>
+                    <li style="font-size:9px">{{m.collect_count|number}}人看过</li>
                     <li>
                         <div class="button">
                             购票
@@ -69,6 +69,13 @@ export default {
             });
 
         }
+    },
+    filters: {
+        number: function(value) {
+            if(value<9999) return value;
+            else{return (value/10000).toFixed(1)+"万"}
+            
+        }
     }
 }
 </script>
@@ -82,7 +89,7 @@ a {
     list-style: none;
     margin: 0;
     padding: 0 20px;
-    width: 57%;
+    width: 54%;
 }
 
 .hotMovie {
@@ -95,7 +102,7 @@ a {
     list-style: none;
     float: right;
     padding: 0;
-    width: 21%;
+    width: 24%;
     text-align: center;
     vertical-align: middle;
     margin: 25px 0 0;

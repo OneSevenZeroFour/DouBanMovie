@@ -28,7 +28,7 @@
                         </li>
                     </ul>
                     <ul class="hotDetailButton">
-                        <li style="font-size:9px">{{value.collect_count}}人想看</li>
+                        <li style="font-size:9px">{{value.collect_count|number}}人想看</li>
                         <li>
                             <div class="button">
                                 想看
@@ -50,15 +50,12 @@ export default {
     computed: {
         movieObjs() {
             return this.movieObj;
-        },
-        number(){
         }
     },
     mounted() {
         if (sessionStorage.getItem('willing')) {
             this.movieObj = JSON.parse(sessionStorage.getItem('willing'));
-        }
-        else {
+        } else {
             jsonp('https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city=广州&start=0&count=100', null, (err, data) => {
                 if (err) {
                     console.error(err.message);
@@ -68,7 +65,6 @@ export default {
                     let movieArr = [];
                     let timeStr = "";
                     data.subjects.forEach((e, i) => {
-                        // console.log(e.mainland_pubdate);
                         if (timeStr === e.mainland_pubdate) {
                             movieArr.push(e);
                         } else {
@@ -87,7 +83,6 @@ export default {
 
                     sessionStorage.setItem('willing', JSON.stringify(this.movieObj));
 
-                    console.log(this.this.movieObj);
 
                     function strMapToObj(strMap) {
                         let obj = Object.create(null);
@@ -132,6 +127,13 @@ export default {
                 }
             })
         };
+    },
+    filters: {
+        number: function(value) {
+            if(value<9999) return value;
+            else{return (value/10000).toFixed(1)+"万"}
+            
+        }
     }
 }
 </script>
